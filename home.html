@@ -1,1 +1,93 @@
-
+<!DOCTYPE html>
+<html lang ="en">
+    <head>
+        <meta charset="UFT-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>"Passive Agressive Roomate Simulator</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                font-family: 'Comic Sans MS', cursive, sans-serif;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2, 100%);
+                min-height: 100vh;
+                padding: 20px;
+            }
+            .container {
+                max-width: 800px;
+                margin: 0 auto;
+            }
+            h1 {
+                text-align: center;
+                color: white;
+                font-size: 2.5em;
+                margin-bottom: 10px;
+                text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+                animation: passive-aggressive-shake 2s infinite;
+            }
+            @keyframes passive-aggressive-shake {
+                0%, 100% { transform: translateX(0); }
+                25% { transform: translateX(-2px); }
+                75% { transform: translateX(2px); }
+            }
+            .subtitle {
+                text-align: center;
+                color: #ffd700;
+                margin-bottom: 30px;
+                font-size: 1.2em;
+            }
+            .card {
+                background: white;
+                border-radius: 15px;
+                padding: 30px;
+                margin-bottom: 20px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+                transition: transform 0.3s;
+            }
+            .card:hover {
+                transform: translateY(-5px);
+            }
+            .input-section {
+                margin-bottom: 20px;
+            }
+            label {
+                display: block;
+                margin-bottom: 10px;
+                font-weight: bold;
+                color: #333;
+            }
+            input[type="text"], textarea {
+                width: 100%;
+                padding: 12px;
+                border: 2px solid #ddd;
+                border-radius: 8px;
+                font-size: 16px;
+                font-family: Arial, sans-serif;
+            }
+            textarea {
+                min-height: 100px;
+                resize: vertical;
+            }
+            .pettiness-section {
+                margin: 20px 0;
+            }
+            .slider-container {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                margin-top: 10px;
+            }
+            input[type="range"] {
+                flex: 1;
+                -webkit-appearance: none;
+                height: 10px;
+                border-radius: 5px;
+                background: linear-gradient(to right, #4ade80 0%, #fbbf24 50%, #ef4444 100%);
+                outline: none;
+            }
+        </style>
+    </head>
+</html>
