@@ -1,93 +1,371 @@
 <!DOCTYPE html>
-<html lang ="en">
-    <head>
-        <meta charset="UFT-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>"Passive Agressive Roomate Simulator</title>
-        <style>
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passive Aggressive Roommate Simulator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: passive-aggressive-shake 2s infinite;
+        }
+        @keyframes passive-aggressive-shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-2px); }
+            75% { transform: translateX(2px); }
+        }
+        .subtitle {
+            text-align: center;
+            color: #ffd700;
+            margin-bottom: 30px;
+            font-size: 1.2em;
+        }
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .input-section {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+        }
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        .pettiness-section {
+            margin: 20px 0;
+        }
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        input[type="range"] {
+            flex: 1;
+            -webkit-appearance: none;
+            height: 10px;
+            border-radius: 5px;
+            background: linear-gradient(to right, #4ade80 0%, #fbbf24 50%, #ef4444 100%);
+            outline: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: #fff;
+            cursor: pointer;
+            border: 3px solid #764ba2;
+        }
+        .pettiness-label {
+            font-weight: bold;
+            color: #764ba2;
+            min-width: 180px;
+        }
+        .feature-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        button:active {
+            transform: scale(0.95);
+        }
+        .output-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: #fff3cd;
+            border-radius: 10px;
+            border: 3px dashed #ffc107;
+            min-height: 100px;
+            position: relative;
+        }
+        .sticky-note {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 5px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+            font-family: 'Comic Sans MS', cursive;
+            font-size: 18px;
+            color: #333;
+            position: relative;
+            transform: rotate(-1deg);
+            transition: transform 0.3s;
+        }
+        .sticky-note:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+        .sticky-note::before {
+            content: "📌";
+            position: absolute;
+            top: -10px;
+            right: 10px;
+            font-size: 24px;
+        }
+        .emoji-spam {
+            margin: 0 2px;
+            display: inline-block;
+            animation: emoji-dance 1s infinite;
+        }
+        @keyframes emoji-dance {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        .copy-button {
+            background: #10b981;
+            padding: 8px 15px;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .loading {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+        }
+        #qrcode {
+            margin: 20px auto;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Passive Aggressive Roommate Simulator 🙃</h1>
+        <p class="subtitle">Because direct communication is SO last year</p>
+        <div class="card">
+            <div class="input-section">
+                <label for="normalRequest">Type your NORMAL request (what you'd actually want to say):</label>
+                <textarea id="normalRequest" placeholder="Example: Please wash your dishes"></textarea>
+            </div>
+            <div class="pettiness-section">
+                <label>Pettiness Level:</label>
+                <div class="slider-container">
+                    <input type="range" id="pettinessSlider" min="1" max="5" value="3">
+                    <span class="pettiness-label" id="pettinessLabel">Slightly Annoyed</span>
+                </div>
+            </div>
+            <div class="feature-buttons">
+                <button onclick="translateMessage()">🔄 Translate to Passive Aggressive</button>
+                <button onclick="generateFridgeNote()">🧊 Generate Fridge Note</button>
+                <button onclick="generateChoreChart()">📝 Chore Chart of Disappointment</button>
+                <button onclick="generateNoiseComplaint()">🔊 Noise Complaint Composer</button>
+                <button onclick="generateSubliminal()">👁️ Subliminal Message QR</button>
+            </div>
+            <div class="output-section" id="output">
+                <p style="color: #999; text-align: center;">Your passive aggressive masterpiece will appear here...</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        const pettinessLevels = {
+            1: "Midwest Nice",
+            2: "Slightly Annoyed",
+            3: "Fed Up",
+            4: "Writing a Thesis on Your Failures",
+            5: "PhD Student in 7th Year"
+        };
+        document.getElementById('pettinessSlider').addEventListener('input', (e) => {
+            document.getElementById('pettinessLabel').textContent = pettinessLevels[e.target.value];
+        });
+        const templates = {
+            dishes: {
+                1: ["Hey there! Just wanted to mention the dishes in the sink when you get a chance 😊", "No rush on the dishes! Just thought I'd mention them 🙂"],
+                2: ["I see we're starting a new ecosystem in the sink! How exciting 🙃", "The dishes have been marinating for a while now - they're probably ready! 😊"],
+                3: ["WOW! The fruit flies are having a PARTY in the sink! So glad we could host!! 🎉🪰", "I was going to do dishes but I didn't want to disturb the science experiment you're conducting 🧪"],
+                4: ["FASCINATING how the dishes have achieved sentience! Should we name them?? I'm thinking 'Crusty' for the pan! 🙃🙃", "I've started a documentary about the sink situation. Day 5: Still no signs of intelligent life approaching the dishes 📹"],
+                5: ["I've contacted NASA about the new life forms in our sink. They're VERY interested!!! Also, your mother called - I told her about your 'cleaning habits' 🙂🙂🙂", "I've taken the liberty of posting our sink on r/NeckbeardNests. It's already trending! You're FAMOUS! 🎉📸 #SinkGate2024"]
+            },
+            noise: {
+                1: ["Hey! Just wanted to check if you could keep it down a tiny bit? Thanks! 😊", "Would you mind using headphones? No worries if not! 🎧"],
+                2: ["Wow, sounds like you're having fun up there! Some of us are trying to sleep though 😅", "Your music has great bass! I can feel it through the floor! 🎵"],
+                3: ["LOVE that you're practicing your elephant impression at 2am! So realistic!! 🐘", "Is that morse code you're tapping? Because it's spelling out 'I-H-A-T-E-M-Y-R-O-O-M-M-A-T-E' 🙃"],
+                4: ["Dearest Roommate, thy midnight revelry doth pierce mine ears like daggers! Forsooth! 🎭", "I've started a spreadsheet tracking your noise levels. You'll be thrilled to know you've broken THREE records tonight! 📊"],
+                5: ["I've submitted your 2am DJ set to the Guinness Book of World Records under 'Most Inconsiderate Human'. Fingers crossed!!! 🤞📢", "The neighbors started a petition. I signed it 47 times with different handwriting. You're welcome! 😘"]
+            },
+            food: {
+                1: ["Hey! I think someone might have grabbed my yogurt by mistake 😊", "Missing my lunch - if you see it, let me know! 🙂"],
+                2: ["Interesting how my CLEARLY LABELED food keeps disappearing 🤔", "My food has gone on another adventure! Hope it's having fun! 🙃"],
+                3: ["CRIME SCENE: Kitchen. VICTIM: My sandwich. SUSPECT: You. EVIDENCE: Crumbs on your shirt 🔍", "I've installed a security camera in the fridge. SMILE! You're on Candid Camera! 📸"],
+                4: ["I've filed a police report for the THEFT of my leftover pad thai. Case #2024-SERIOUSLY-STOP 👮", "Started a GoFundMe for my stolen groceries. Already raised $3.50! That's YOUR lunch tomorrow! 💰"],
+                5: ["I've contacted the FBI, CIA, and my MOM about the food situation. They're ALL very disappointed in you 😤", "Your food theft has been submitted to the International Criminal Court. War crimes include: eating my LABELED burrito 🌯⚖️"]
+            },
+            cleaning: {
+                1: ["Would love some help with cleaning when you get a chance! 😊", "The common area could use a little TLC! 🧹"],
+                2: ["I see we're going for that 'lived-in' look! Very authentic! 🏚️", "The vacuum misses you! It asked about you yesterday 🙃"],
+                3: ["I've named the dust bunnies! Meet Gerald, Francis, and Big Chungus! 🐰", "Good news! Our apartment qualified for a biohazard study! They're especially interested in the bathroom! 🧪"],
+                4: ["I've started charging the cockroaches rent since they're basically your pets now 🪳", "The health inspector stopped by. I told him it was performance art. He cried. 😭"],
+                5: ["I've submitted our apartment to Hoarders. They said it was 'too extreme for television' 📺", "Your mother is visiting tomorrow. Just kidding! But imagine if she saw this place??? Actually, I'm calling her right now 📱"]
             }
-            body {
-                font-family: 'Comic Sans MS', cursive, sans-serif;
-                background: linear-gradient(135deg, #667eea 0%, #764ba2, 100%);
-                min-height: 100vh;
-                padding: 20px;
+        };
+        function getRandomTemplate(category, pettiness) {
+            const messages = templates[category][pettiness];
+            return messages[Math.floor(Math.random() * messages.length)];
+        }
+        function addEmojis(text, pettiness) {
+            const emojis = ['🙂', '🙃', '😊', '😅', '🤔', '😌', '💕', '✨', '🎉', '👍'];
+            const count = pettiness;
+            let result = text;
+            for (let i = 0; i < count; i++) {
+                result += ` ${emojis[Math.floor(Math.random() * emojis.length)]}`;
             }
-            .container {
-                max-width: 800px;
-                margin: 0 auto;
+            return result;
+        }
+        function translateMessage() {
+            const input = document.getElementById('normalRequest').value.toLowerCase();
+            const pettiness = parseInt(document.getElementById('pettinessSlider').value);
+            let output = '';
+            if (!input) {
+                output = "Oh, you want me to translate NOTHING? How very zen of you! 🧘‍♀️";
+            } else if (input.includes('dish')) {
+                output = getRandomTemplate('dishes', pettiness);
+            } else if (input.includes('noise') || input.includes('loud') || input.includes('quiet')) {
+                output = getRandomTemplate('noise', pettiness);
+            } else if (input.includes('food') || input.includes('eat') || input.includes('fridge')) {
+                output = getRandomTemplate('food', pettiness);
+            } else if (input.includes('clean') || input.includes('mess')) {
+                output = getRandomTemplate('cleaning', pettiness);
+            } else {
+                const generic = [
+                    `Oh WOW! "${input}"?? How DELIGHTFUL that you're asking! I'll get RIGHT on that! 🙃`,
+                    `Sure thing! Because I LOVE when you "${input}"! It's my FAVORITE! 😊😊😊`,
+                    `Absolutely! Nothing makes me happier than dealing with "${input}"! You're THE BEST! 💕`,
+                    `"${input}"... Hmm, that's SUCH an interesting request! I'm SO glad we're having this conversation! 🙂`,
+                    `Of course! "${input}" is EXACTLY what I wanted to hear today! You read my mind! ✨`
+                ];
+                output = generic[Math.floor(Math.random() * generic.length)];
+                if (pettiness >= 4) {
+                    output += ` (This is sarcasm, in case you couldn't tell)`;
+                }
             }
-            h1 {
-                text-align: center;
-                color: white;
-                font-size: 2.5em;
-                margin-bottom: 10px;
-                text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-                animation: passive-aggressive-shake 2s infinite;
+            displayOutput(output);
+        }
+        function generateFridgeNote() {
+            const pettiness = parseInt(document.getElementById('pettinessSlider').value);
+            const notes = [
+                `🚨 MISSING FOOD ALERT 🚨\nLAST SEEN: In this fridge\nREWARD: My continued tolerance of your existence\nIf found, please return to the person who ACTUALLY bought it`,
+                `To Whoever Ate My Sandwich:\nI hope you enjoyed it! I really do! It only cost me $12 and my entire lunch break to get it. But sure, help yourself! Mi sandwich es SU sandwich apparently! 🥪💔`,
+                `OFFICIAL FRIDGE RULES:\n1. If you didn't buy it, DON'T EAT IT\n2. See rule #1\n3. SERIOUSLY, SEE RULE #1\n4. I will find you\n5. And I will passive aggressively text you`,
+                `Dear Food Thief,\nI've licked everything in this fridge.\nEnjoy! 😘\n- Your Roommate`,
+                `CRIME SCENE - DO NOT CROSS\n🍕 Victim: Leftover Pizza\n🕐 Time of Death: Between 2am-6am\n👤 Suspect: YOU\n📸 Evidence: Your guilty face right now`
+            ];  
+            const note = notes[Math.min(pettiness - 1, notes.length - 1)];
+            displayOutput(note, true);
+        }
+        function generateChoreChart() {
+            const pettiness = parseInt(document.getElementById('pettinessSlider').value);
+            const sadEmojis = ['😢', '😭', '💔', '😔', '😞'];
+            const multiplier = pettiness;           
+            let chart = `📋 CHORE CHART OF DISAPPOINTMENT 📋\n\n`;
+            chart += `DISHES: Not done ${sadEmojis[0].repeat(multiplier)}\n`;
+            chart += `VACUUM: Hasn't seen action in 3 weeks ${sadEmojis[1].repeat(multiplier)}\n`;
+            chart += `BATHROOM: Developing its own ecosystem ${sadEmojis[2].repeat(multiplier)}\n`;
+            chart += `TRASH: Achieving sentience ${sadEmojis[3].repeat(multiplier)}\n`;
+            chart += `MY WILL TO LIVE: Decreasing daily ${sadEmojis[4].repeat(multiplier)}\n\n`;         
+            if (pettiness >= 4) {
+                chart += `*Your mother has been notified of your performance*`;
+            }        
+            displayOutput(chart, true);
+        }
+        function generateNoiseComplaint() {
+            const pettiness = parseInt(document.getElementById('pettinessSlider').value);
+            let complaint = '';
+            if (pettiness <= 2) {
+                complaint = `Dear Roommate,\nYour music is a bit loud. Could you turn it down?\nThanks!\n- Your Slightly Sleepy Roommate`;
+            } else if (pettiness === 3) {
+                complaint = `Dearest Companion of the Shared Dwelling,\n\nIt appears thou hast forgotten that these walls are but paper-thin veils between our souls! Your midnight revelry pierces through like Thor's hammer upon the anvil of my SANITY!\n\nYours in exhaustion,\n- The Ghost of Your Former Roommate`;
+            } else {
+                complaint = `To Whom It May Concern (YOU):\n\nACT I: The Thumping\nHark! What sound through yonder wall breaks?\nIt is the bass, and you are the DJ!\n\nACT II: The Suffering  \nTo sleep, perchance to dream? NAY!\nFor in that sleep, what drums may come!\n\nACT III: The Revenge\nI've downloaded bagpipe music.\n6am is going to be VERY fun for you.\n\nFIN 🎭`;
             }
-            @keyframes passive-aggressive-shake {
-                0%, 100% { transform: translateX(0); }
-                25% { transform: translateX(-2px); }
-                75% { transform: translateX(2px); }
+            displayOutput(complaint, true);
+        }
+        function generateSubliminal() {
+            const links = [
+                "How to Load a Dishwasher Properly",
+                "Basic Hygiene for Beginners",
+                "Why Stealing Food is Wrong - A Children's Guide",
+                "Volume Control: A Lost Art",
+                "The Importance of Closing Cabinets",
+                "How to Use Headphones: Tutorial",
+                "Cleaning 101: Yes, You Need To Do It",
+                "Personal Space and Boundaries for Dummies"
+            ];
+            const selectedLink = links[Math.floor(Math.random() * links.length)];
+            const fakeUrl = `youtube.com/watch?v=${Math.random().toString(36).substring(7)}`;
+            
+            const output = `🔗 QR CODE GENERATED! 🔗\n\nLink: ${fakeUrl}\nVideo Title: "${selectedLink}"\n\n[QR CODE PLACEHOLDER]\n██████████████\n██░░░░░░░░░░██\n██░██████████░██\n██░██░░░░░░██░██\n██░██░████░██░██\n██░██░░░░░░██░██\n██░██████████░██\n██░░░░░░░░░░░░██\n██████████████\n\nPrint and leave strategically around the apartment! 😇`;
+            
+            displayOutput(output, true);
+        }
+        function displayOutput(text, isNote = false) {
+            const outputDiv = document.getElementById('output');
+            if (isNote) {
+                outputDiv.innerHTML = `<div class="sticky-note"><pre style="font-family: 'Comic Sans MS', cursive; white-space: pre-wrap;">${text}</pre><button class="copy-button" onclick="copyToClipboard('${text.replace(/'/g, "\\'")}')">Copy to Clipboard</button></div>`;
+            } else {
+                outputDiv.innerHTML = `<div class="sticky-note">${text}<br><button class="copy-button" onclick="copyToClipboard('${text.replace(/'/g, "\\'")}')">Copy to Clipboard</button></div>`;
             }
-            .subtitle {
-                text-align: center;
-                color: #ffd700;
-                margin-bottom: 30px;
-                font-size: 1.2em;
-            }
-            .card {
-                background: white;
-                border-radius: 15px;
-                padding: 30px;
-                margin-bottom: 20px;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-                transition: transform 0.3s;
-            }
-            .card:hover {
-                transform: translateY(-5px);
-            }
-            .input-section {
-                margin-bottom: 20px;
-            }
-            label {
-                display: block;
-                margin-bottom: 10px;
-                font-weight: bold;
-                color: #333;
-            }
-            input[type="text"], textarea {
-                width: 100%;
-                padding: 12px;
-                border: 2px solid #ddd;
-                border-radius: 8px;
-                font-size: 16px;
-                font-family: Arial, sans-serif;
-            }
-            textarea {
-                min-height: 100px;
-                resize: vertical;
-            }
-            .pettiness-section {
-                margin: 20px 0;
-            }
-            .slider-container {
-                display: flex;
-                align-items: center;
-                gap: 15px;
-                margin-top: 10px;
-            }
-            input[type="range"] {
-                flex: 1;
-                -webkit-appearance: none;
-                height: 10px;
-                border-radius: 5px;
-                background: linear-gradient(to right, #4ade80 0%, #fbbf24 50%, #ef4444 100%);
-                outline: none;
-            }
-        </style>
-    </head>
+        }
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Copied! Now go paste it on their door! 😈');
+            });
+        }
+    </script>
+</body>
 </html>
