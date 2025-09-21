@@ -10,16 +10,19 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             font-family: 'Comic Sans MS', cursive, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
         }
+
         .container {
             max-width: 800px;
             margin: 0 auto;
         }
+
         h1 {
             text-align: center;
             color: white;
@@ -28,17 +31,20 @@
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
             animation: passive-aggressive-shake 2s infinite;
         }
+
         @keyframes passive-aggressive-shake {
             0%, 100% { transform: translateX(0); }
             25% { transform: translateX(-2px); }
             75% { transform: translateX(2px); }
         }
+
         .subtitle {
             text-align: center;
             color: #ffd700;
             margin-bottom: 30px;
             font-size: 1.2em;
         }
+
         .card {
             background: white;
             border-radius: 15px;
@@ -47,18 +53,22 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             transition: transform 0.3s;
         }
+
         .card:hover {
             transform: translateY(-5px);
         }
+
         .input-section {
             margin-bottom: 20px;
         }
+
         label {
             display: block;
             margin-bottom: 10px;
             font-weight: bold;
             color: #333;
         }
+
         input[type="text"], textarea {
             width: 100%;
             padding: 12px;
@@ -67,19 +77,23 @@
             font-size: 16px;
             font-family: Arial, sans-serif;
         }
+
         textarea {
             min-height: 100px;
             resize: vertical;
         }
+
         .pettiness-section {
             margin: 20px 0;
         }
+
         .slider-container {
             display: flex;
             align-items: center;
             gap: 15px;
             margin-top: 10px;
         }
+
         input[type="range"] {
             flex: 1;
             -webkit-appearance: none;
@@ -88,6 +102,7 @@
             background: linear-gradient(to right, #4ade80 0%, #fbbf24 50%, #ef4444 100%);
             outline: none;
         }
+
         input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
@@ -98,17 +113,20 @@
             cursor: pointer;
             border: 3px solid #764ba2;
         }
+
         .pettiness-label {
             font-weight: bold;
             color: #764ba2;
             min-width: 180px;
         }
+
         .feature-buttons {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
             margin: 20px 0;
         }
+
         button {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -120,13 +138,16 @@
             transition: all 0.3s;
             font-weight: bold;
         }
+
         button:hover {
             transform: scale(1.05);
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
+
         button:active {
             transform: scale(0.95);
         }
+
         .output-section {
             margin-top: 30px;
             padding: 20px;
@@ -136,6 +157,7 @@
             min-height: 100px;
             position: relative;
         }
+
         .sticky-note {
             background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
             padding: 20px;
@@ -149,9 +171,11 @@
             transform: rotate(-1deg);
             transition: transform 0.3s;
         }
+
         .sticky-note:hover {
             transform: rotate(0deg) scale(1.02);
         }
+
         .sticky-note::before {
             content: "📌";
             position: absolute;
@@ -159,72 +183,34 @@
             right: 10px;
             font-size: 24px;
         }
+
         .emoji-spam {
             margin: 0 2px;
             display: inline-block;
             animation: emoji-dance 1s infinite;
         }
+
         @keyframes emoji-dance {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-5px); }
         }
+
         .copy-button {
             background: #10b981;
             padding: 8px 15px;
             font-size: 14px;
             margin-top: 10px;
         }
+
         .loading {
             text-align: center;
             color: #666;
             font-style: italic;
         }
+
         #qrcode {
             margin: 20px auto;
             text-align: center;
-        }
-        .achievement {
-            background: #ffc107;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 14px;
-            font-weight: bold;
-            color: #333;
-            animation: achievement-pop 0.5s;
-        }
-        @keyframes achievement-pop {
-            0% { transform: scale(0); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
-        }
-        .venmo-request {
-            background: #3d95ce;
-            color: white;
-            padding: 15px;
-            border-radius: 10px;
-            font-family: Arial, sans-serif;
-        }
-        .group-chat {
-            background: #25d366;
-            color: white;
-            padding: 15px;
-            border-radius: 10px;
-            font-family: Arial, sans-serif;
-        }
-        .door-sign {
-            background: repeating-linear-gradient(
-                45deg,
-                #ff0000,
-                #ff0000 10px,
-                #ffffff 10px,
-                #ffffff 20px
-            );
-            padding: 20px;
-            border: 5px solid #000;
-            color: #000;
-            font-weight: bold;
-            text-align: center;
-            font-size: 20px;
         }
     </style>
 </head>
@@ -232,11 +218,13 @@
     <div class="container">
         <h1>Passive Aggressive Roommate Simulator 🙃</h1>
         <p class="subtitle">Because direct communication is SO last year</p>
+
         <div class="card">
             <div class="input-section">
                 <label for="normalRequest">Type your NORMAL request (what you'd actually want to say):</label>
                 <textarea id="normalRequest" placeholder="Example: Please wash your dishes"></textarea>
             </div>
+
             <div class="pettiness-section">
                 <label>Pettiness Level:</label>
                 <div class="slider-container">
@@ -244,44 +232,23 @@
                     <span class="pettiness-label" id="pettinessLabel">Slightly Annoyed</span>
                 </div>
             </div>
+
             <div class="feature-buttons">
                 <button onclick="translateMessage()">🔄 Translate to Passive Aggressive</button>
                 <button onclick="generateFridgeNote()">🧊 Generate Fridge Note</button>
                 <button onclick="generateChoreChart()">📝 Chore Chart of Disappointment</button>
                 <button onclick="generateNoiseComplaint()">🔊 Noise Complaint Composer</button>
                 <button onclick="generateSubliminal()">👁️ Subliminal Message QR</button>
-                <button onclick="generateVenmoRequest()">💸 Petty Venmo Request</button>
-                <button onclick="generateGroupChat()">📱 Group Chat Callout</button>
-                <button onclick="generateDoorSign()">🚪 Door Sign Generator</button>
             </div>
+
             <div class="output-section" id="output">
                 <p style="color: #999; text-align: center;">Your passive aggressive masterpiece will appear here...</p>
             </div>
         </div>
-        <div class="card" style="background: #fef3cd; border: 3px solid #ffc107;">
-            <h2 style="text-align: center; color: #856404;">🏆 Roommate Rage Score 🏆</h2>
-            <div style="text-align: center; font-size: 48px; margin: 20px 0;" id="rageScore">0.0</div>
-            <p style="text-align: center; color: #856404;" id="rageLevel">Generate some passive aggression to begin!</p>
-            <div style="margin-top: 20px;">
-                <h3 style="color: #856404;">Achievement Unlocked:</h3>
-                <div id="achievements" style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px;"></div>
-            </div>
-        </div>
     </div>
+
     <script>
-        let totalRageScore = 0;
-        let generationCount = 0;
-        let achievements = new Set();
-        const achievementList = {
-            firstBlood: { name: "🩸 First Blood", condition: () => generationCount === 1 },
-            dishMaster: { name: "🍽️ Dish Destroyer", condition: () => document.querySelectorAll('.generated-dishes').length >= 3 },
-            maxPetty: { name: "😤 Maximum Pettiness", condition: () => document.getElementById('pettinessSlider').value == 5 },
-            tenX: { name: "🔟 Decuple Threat", condition: () => generationCount >= 10 },
-            venmoVillain: { name: "💰 Venmo Villain", condition: () => document.querySelectorAll('.venmo-generated').length >= 1 },
-            groupChatGod: { name: "📱 Group Chat God", condition: () => document.querySelectorAll('.groupchat-generated').length >= 1 },
-            rageMonster: { name: "👹 Rage Monster", condition: () => totalRageScore >= 100 },
-            copypasta: { name: "📋 Copy Pasta Chef", condition: () => document.querySelectorAll('.copied').length >= 5 }
-        };
+        // Pettiness level descriptions
         const pettinessLevels = {
             1: "Midwest Nice",
             2: "Slightly Annoyed",
@@ -289,50 +256,84 @@
             4: "Writing a Thesis on Your Failures",
             5: "PhD Student in 7th Year"
         };
+
+        // Update pettiness label
         document.getElementById('pettinessSlider').addEventListener('input', (e) => {
             document.getElementById('pettinessLabel').textContent = pettinessLevels[e.target.value];
         });
+
+        // Template responses based on pettiness level
         const templates = {
             dishes: {
-                1: ["Hey there! Just wanted to mention the dishes in the sink when you get a chance 😊", "No rush on the dishes! Just thought I'd mention them 🙂"],
-                2: ["I see we're starting a new ecosystem in the sink! How exciting 🙃", "The dishes have been marinating for a while now - they're probably ready! 😊"],
-                3: ["WOW! The fruit flies are having a PARTY in the sink! So glad we could host!! 🎉🪰", "I was going to do dishes but I didn't want to disturb the science experiment you're conducting 🧪"],
-                4: ["FASCINATING how the dishes have achieved sentience! Should we name them?? I'm thinking 'Crusty' for the pan! 🙃🙃", "I've started a documentary about the sink situation. Day 5: Still no signs of intelligent life approaching the dishes 📹"],
-                5: ["I've contacted NASA about the new life forms in our sink. They're VERY interested!!! Also, your mother called - I told her about your 'cleaning habits' 🙂🙂🙂", "I've taken the liberty of posting our sink on r/NeckbeardNests. It's already trending! You're FAMOUS! 🎉📸 #SinkGate2024"]
+                1: ["Hey there! Just wanted to mention the dishes in the sink when you get a chance 😊", "No rush on the dishes! Just thought I'd mention them 🙂", "The dishes are waiting for you whenever you're ready! 😊", "Just a friendly reminder about the dishes! ☺️"],
+                2: ["I see we're starting a new ecosystem in the sink! How exciting 🙃", "The dishes have been marinating for a while now - they're probably ready! 😊", "Interesting art installation you've created in the sink! Very avant-garde! 🎨", "The dishes told me they miss the cupboard. Just passing along the message! 🍽️"],
+                3: ["WOW! The fruit flies are having a PARTY in the sink! So glad we could host!! 🎉🪰", "I was going to do dishes but I didn't want to disturb the science experiment you're conducting 🧪", "The sink has developed its own weather system! There's a 90% chance of mold! ☔", "I've started a nature documentary about our sink. David Attenborough is interested! 🎬"],
+                4: ["FASCINATING how the dishes have achieved sentience! Should we name them?? I'm thinking 'Crusty' for the pan! 🙃🙃", "I've started a documentary about the sink situation. Day 5: Still no signs of intelligent life approaching the dishes 📹", "The dishes have formed their own civilization. They've elected a mayor. It's the moldy spoon. 🥄👑", "I've enrolled the sink in the Met Museum. It's now classified as 'abstract expressionism' 🖼️"],
+                5: ["I've contacted NASA about the new life forms in our sink. They're VERY interested!!! Also, your mother called - I told her about your 'cleaning habits' 🙂🙂🙂", "I've taken the liberty of posting our sink on r/NeckbeardNests. It's already trending! You're FAMOUS! 🎉📸 #SinkGate2024", "The CDC wants to study our kitchen. Something about 'unprecedented bacterial evolution.' You're contributing to SCIENCE! 🦠🔬", "I've started a religion worshipping the sink entity. Services are Sundays. You're the sacrifice. 🕯️"]
             },
             noise: {
-                1: ["Hey! Just wanted to check if you could keep it down a tiny bit? Thanks! 😊", "Would you mind using headphones? No worries if not! 🎧"],
-                2: ["Wow, sounds like you're having fun up there! Some of us are trying to sleep though 😅", "Your music has great bass! I can feel it through the floor! 🎵"],
-                3: ["LOVE that you're practicing your elephant impression at 2am! So realistic!! 🐘", "Is that morse code you're tapping? Because it's spelling out 'I-H-A-T-E-M-Y-R-O-O-M-M-A-T-E' 🙃"],
-                4: ["Dearest Roommate, thy midnight revelry doth pierce mine ears like daggers! Forsooth! 🎭", "I've started a spreadsheet tracking your noise levels. You'll be thrilled to know you've broken THREE records tonight! 📊"],
-                5: ["I've submitted your 2am DJ set to the Guinness Book of World Records under 'Most Inconsiderate Human'. Fingers crossed!!! 🤞📢", "The neighbors started a petition. I signed it 47 times with different handwriting. You're welcome! 😘"]
+                1: ["Hey! Just wanted to check if you could keep it down a tiny bit? Thanks! 😊", "Would you mind using headphones? No worries if not! 🎧", "Sorry to bother you! Just wondering if you could lower the volume a smidge? 🔉", "The walls are pretty thin here! Just FYI! 😊"],
+                2: ["Wow, sounds like you're having fun up there! Some of us are trying to sleep though 😅", "Your music has great bass! I can feel it through the floor! 🎵", "Impressive stomping technique! Are you training for something? 🏃", "I didn't know we lived above a nightclub! When did that happen? 🕺"],
+                3: ["LOVE that you're practicing your elephant impression at 2am! So realistic!! 🐘", "Is that morse code you're tapping? Because it's spelling out 'I-H-A-T-E-M-Y-R-O-O-M-M-A-T-E' 🙃", "The seismograph I installed is going CRAZY! Are you bowling up there?? 🎳", "Thanks for the free vibration therapy! My back has never felt better! 💆"],
+                4: ["Dearest Roommate, thy midnight revelry doth pierce mine ears like daggers! Forsooth! 🎭", "I've started a spreadsheet tracking your noise levels. You'll be thrilled to know you've broken THREE records tonight! 📊", "Your 3am workout routine inspired me to take up drums! I'll start practicing at 6am! 🥁", "I've written a symphony inspired by your footsteps. It's called 'Requiem for My Sanity' 🎼"],
+                5: ["I've submitted your 2am DJ set to the Guinness Book of World Records under 'Most Inconsiderate Human'. Fingers crossed!!! 🤞📢", "The neighbors started a petition. I signed it 47 times with different handwriting. You're welcome! 😘", "I've live-tweeted your entire noise session. #RoommateGate is trending! You're Twitter famous! 🐦", "NASA called. They detected your footsteps from the International Space Station. They're concerned. 🛸"]
             },
             food: {
-                1: ["Hey! I think someone might have grabbed my yogurt by mistake 😊", "Missing my lunch - if you see it, let me know! 🙂"],
-                2: ["Interesting how my CLEARLY LABELED food keeps disappearing 🤔", "My food has gone on another adventure! Hope it's having fun! 🙃"],
-                3: ["CRIME SCENE: Kitchen. VICTIM: My sandwich. SUSPECT: You. EVIDENCE: Crumbs on your shirt 🔍", "I've installed a security camera in the fridge. SMILE! You're on Candid Camera! 📸"],
-                4: ["I've filed a police report for the THEFT of my leftover pad thai. Case #2024-SERIOUSLY-STOP 👮", "Started a GoFundMe for my stolen groceries. Already raised $3.50! That's YOUR lunch tomorrow! 💰"],
-                5: ["I've contacted the FBI, CIA, and my MOM about the food situation. They're ALL very disappointed in you 😤", "Your food theft has been submitted to the International Criminal Court. War crimes include: eating my LABELED burrito 🌯⚖️"]
-            },
-            room: {
-                1: ["Hey! Just wondering if you could keep your things on your side? Thanks! 😊", "Would love to have a bit more space in the common area! 🙂"],
-                2: ["Interesting how your stuff has started a colonial expansion into my side 🗺️", "I see we're playing 'the floor is storage'! Fun game! 🎮"],
-                3: ["Your belongings have annexed my side of the room. I'm drafting a UN resolution 🏳️", "I've started charging your stuff rent for occupying my space. You owe me $47.83 💸"],
-                4: ["I've drawn a border with police tape. Your socks violated the treaty THREE times today 🚧", "Built a wall out of your dirty laundry. Making YOU pay for it. It's gonna be YUGE! 🧱"],
-                5: ["I've hired a surveyor to establish property lines. Your underwear is in violation of city ordinances 📐", "Contacted Border Patrol about your stuff's illegal immigration to my side. They're bringing dogs 🚔"]
+                1: ["Hey! I think someone might have grabbed my yogurt by mistake 😊", "Missing my lunch - if you see it, let me know! 🙂", "Has anyone seen my leftovers? They seem to have wandered off! 🤔", "My food disappeared! Must be fridge gremlins again! 😄"],
+                2: ["Interesting how my CLEARLY LABELED food keeps disappearing 🤔", "My food has gone on another adventure! Hope it's having fun! 🙃", "The food fairy struck again! She only takes MY stuff though. Weird! 🧚", "My name on the container must be written in invisible ink! 🔍"],
+                3: ["CRIME SCENE: Kitchen. VICTIM: My sandwich. SUSPECT: You. EVIDENCE: Crumbs on your shirt 🔍", "I've installed a security camera in the fridge. SMILE! You're on Candid Camera! 📸", "Missing: One burrito. Last seen: In fridge. Reward: Me not being passive aggressive for ONE day 🌯", "I've hired a private investigator to solve The Case of the Vanishing Lunch 🕵️"],
+                4: ["I've filed a police report for the THEFT of my leftover pad thai. Case #2024-SERIOUSLY-STOP 👮", "Started a GoFundMe for my stolen groceries. Already raised $3.50! That's YOUR lunch tomorrow! 💰", "I've contacted Judge Judy about our situation. She says you owe me $5000 in emotional damages 👩‍⚖️", "My therapist says the food stealing is triggering my trust issues. That'll be $200 please 💸"],
+                5: ["I've contacted the FBI, CIA, and my MOM about the food situation. They're ALL very disappointed in you 😤", "Your food theft has been submitted to the International Criminal Court. War crimes include: eating my LABELED burrito 🌯⚖️", "I've started a true crime podcast about you. Episode 1: 'The Lunch Thief Living Among Us' 🎙️", "Breaking: UN Security Council to hold emergency session on your violations of the Fridge Geneva Convention 🇺🇳"]
             },
             cleaning: {
-                1: ["Would love some help with cleaning when you get a chance! 😊", "The common area could use a little TLC! 🧹"],
-                2: ["I see we're going for that 'lived-in' look! Very authentic! 🏚️", "The vacuum misses you! It asked about you yesterday 🙃"],
-                3: ["I've named the dust bunnies! Meet Gerald, Francis, and Big Chungus! 🐰", "Good news! Our apartment qualified for a biohazard study! They're especially interested in the bathroom! 🧪"],
-                4: ["I've started charging the cockroaches rent since they're basically your pets now 🪳", "The health inspector stopped by. I told him it was performance art. He cried. 😭"],
-                5: ["I've submitted our apartment to Hoarders. They said it was 'too extreme for television' 📺", "Your mother is visiting tomorrow. Just kidding! But imagine if she saw this place??? Actually, I'm calling her right now 📱"]
+                1: ["Would love some help with cleaning when you get a chance! 😊", "The common area could use a little TLC! 🧹", "Cleaning day sometime soon? Let me know when works! 🧽", "The apartment could use a refresh when you have time! ✨"],
+                2: ["I see we're going for that 'lived-in' look! Very authentic! 🏚️", "The vacuum misses you! It asked about you yesterday 🙃", "Our place has that 'rustic charm' now! Very trendy! 🏛️", "I think the apartment is trying to return to nature! How eco-friendly! 🌿"],
+                3: ["I've named the dust bunnies! Meet Gerald, Francis, and Big Chungus! 🐰", "Good news! Our apartment qualified for a biohazard study! They're especially interested in the bathroom! 🧪", "The mold in the shower has started paying rent. At least SOMEONE contributes! 🍄", "I found Jimmy Hoffa under your pile of laundry! Mystery solved! 🔍"],
+                4: ["I've started charging the cockroaches rent since they're basically your pets now 🪳", "The health inspector stopped by. I told him it was performance art. He cried. 😭", "Your room has been classified as a Superfund cleanup site. Congrats! 🏆", "I've started giving tours. '$5 to see the 8th Wonder of the World: The Pile!' 🎟️"],
+                5: ["I've submitted our apartment to Hoarders. They said it was 'too extreme for television' 📺", "Your mother is visiting tomorrow. Just kidding! But imagine if she saw this place??? Actually, I'm calling her right now 📱", "The military wants to use our bathroom for biological warfare training. They're impressed! ☣️", "I've sold the movie rights to our living situation. It's called 'The Filth Element' 🎬"]
+            },
+            bathroom: {
+                1: ["Just a heads up - the bathroom could use a quick clean! 😊", "Would you mind grabbing your towel from the bathroom? Thanks! 🙂", "Hey! The bathroom's all yours to clean whenever! 😄", "Friendly reminder about bathroom cleaning! No rush! ☺️"],
+                2: ["The bathroom is developing character! Very... unique character 🙃", "I see you're cultivating something in the shower! Botany project? 🌱", "The toilet has feelings too, you know! It told me it feels neglected 🚽", "Interesting artistic choice leaving hair everywhere! Very... abstract 🎨"],
+                3: ["The bathroom has achieved ecosystem status! The UN wants to protect it! 🌍", "I've started a blog about our bathroom. It's called 'Fifty Shades of Mold' 📝", "The hair in the drain has formed a union. They're demanding better conditions! ✊", "Something in the toilet has evolved. It winked at me. Should I be concerned? 👁️"],
+                4: ["I've named the thing growing in the shower. It responds to 'Kevin' now 🦠", "The bathroom has been featured in 'Architectural Digest' under 'What Not To Do' 🏆", "Your toothbrush has been there so long, archaeologists want to carbon date it 🪥", "The CDC called. They want to use our bathroom to study 'extreme environments' 🔬"],
+                5: ["The bathroom has filed for independence. It's now a sovereign nation. Visa required for entry 🛂", "I've contacted the Vatican. They're considering our toilet for sainthood after the miracles it's witnessed 🙏", "Breaking News: Our bathroom just violated three international treaties and the laws of physics ⚛️", "HAZMAT team refused to enter. They said, and I quote, 'We don't get paid enough for this' ☢️"]
+            },
+            thermostat: {
+                1: ["Is it a bit warm/cold in here for you too? 🌡️", "Mind if we adjust the temperature a tiny bit? 😊", "The thermostat seems a bit off today! 🤔", "Would you be okay with changing the temp slightly? Thanks! ☺️"],
+                2: ["Interesting temperature choice! Training for the Arctic/Sahara? 🏔️🏜️", "I see we're recreating different climate zones! Educational! 🌍", "The penguins/cacti I ordered should arrive soon! They'll love it here! 🐧🌵", "My meat is curing nicely in these conditions! Thanks! 🥩"],
+                3: ["I can now see my breath indoors! What an adventure! ☁️", "I've started a fire in my room for warmth. Hope that's cool! 🔥", "My sweat has formed a small pond. I've added fish! 🐠", "The ice age has begun in our apartment. I've befriended a mammoth 🦣"],
+                4: ["I've reported you to the Geneva Convention for temperature-based torture 🌡️", "My lawyer says this qualifies as 'cruel and unusual punishment' ⚖️", "I'm now technically a different state of matter due to the temperature 🧊", "Scientists want to study how I survive in these extreme conditions 👨‍🔬"],
+                5: ["I've evolved to survive in these temperatures. I have gills/fur now 🐟", "The apartment has been reclassified as either tundra or tropical rainforest by National Geographic 🗺️", "I've started a support group for thermostat abuse survivors. Meetings are Wednesdays 🤝", "Breaking: UN declares our apartment a humanitarian crisis due to temperature crimes 🆘"]
+            },
+            guests: {
+                1: ["Your friends seem nice! Maybe next time a heads up? 😊", "Lots of guests lately! The apartment's popular! 🙂", "Would you mind letting me know when people are coming over? Thanks! ☺️", "Hey! Just checking how long your friends are staying? 😄"],
+                2: ["Oh good! More strangers in our apartment! I LOVE surprises! 🙃", "Your friend's been here for 3 days. Should I charge them rent? 💰", "Didn't know we became a hostel! Should I leave mints on the pillows? 🏨", "Your guests are lovely! They used all my shampoo! How thoughtful! 🧴"],
+                3: ["I've started an Airbnb listing since we're clearly running a hotel now 📱", "Your friend and I are best friends now! I told them ALL your embarrassing stories! 📖", "Plot twist: I'm now dating your guest. We're moving in together. Here. 💕", "I've been charging your friends $20 admission. We're up to $60! 💵"],
+                4: ["I've updated the lease to include the 47 people who apparently live here now 📋", "Your mom called. I told her about your 'overnight guests.' She has QUESTIONS 📞", "I've registered our apartment as a nonprofit shelter since we house so many people 🏠", "Security! Oh wait, that's just another one of your random friends. My bad! 👮"],
+                5: ["I've contacted MTV. We're now filming 'The Real World: Unwanted Guests' 🎬", "The fire marshal says we've exceeded maximum occupancy. By 73 people. 🚨", "I've started a documentary: 'Strangers in My Home: A Roommate's Descent into Madness' 🎥", "Plot twist: I've been subletting to your guests. I'm now your landlord. Rent's due! 🏡"]
+            },
+            parking: {
+                1: ["Hey! Just noticed you're in my parking spot! 🚗", "Would you mind moving your car when you get a chance? Thanks! 😊", "Think there might be some confusion about the parking spots! 🙂", "Your car is in my spot - no worries, just letting you know! ☺️"],
+                2: ["Interesting parking choice! My spot must look extra appealing today! 🙃", "I see we're playing musical chairs with parking spots! Fun! 🎵", "Your car looks great in my spot! Really brings out the paint job! ✨", "Thanks for keeping my parking spot warm! So considerate! 🚙"],
+                3: ["I've reported your car as abandoned. Tow truck comes at 3! 🚛", "I've started a chalk outline around your car. Crime scene vibes! 👮", "Your car and my spot are dating now. It's complicated. 💔", "I've built a shrine around your car. Offerings accepted daily! 🕯️"],
+                4: ["I've legally adopted your car since it lives in my spot now 📄", "Your car has been there so long, it qualifies for residency 🏠", "I've started a garden around your car. The tomatoes are coming in nicely! 🍅", "City council voted. Your car is now a historical landmark 🏛️"],
+                5: ["I've sold your car on Craigslist. It was in my spot, so... mine now! 💰", "Your car has been nominated for 'Worst Parking Job 2024.' Fingers crossed! 🏆", "I've had your car consecrated. It's now a religious site. No moving on Sundays! ⛪", "Breaking: Your parking has been submitted to the International Court of Justice ⚖️"]
+            },
+            laundry: {
+                1: ["Your laundry's done! Just giving you a heads up! 😊", "Hey! Your clothes are in the washer/dryer! 🧺", "Just letting you know your laundry cycle finished! ☺️", "Your clothes are ready whenever you are! 👕"],
+                2: ["Your laundry has been done for 3 hours! It's probably lonely! 🙃", "I see we're aging the laundry like fine wine! Interesting technique! 🍷", "Your clothes have started a petition to be moved. They have my signature! 📝", "The washer is crying. It misses your clothes. Please reunite them! 😢"],
+                3: ["Your laundry has been there so long, it's started paying rent! 💰", "I've started a relationship with your laundry. We're very happy together! 💕", "Your clothes have formed their own government in the washer. There's been a coup! 👑", "I'm teaching your laundry to speak. It knows three words so far! 🗣️"],
+                4: ["I've entered your laundry in a science fair. 'Effects of Abandonment on Cotton' 🔬", "Your clothes have been there so long, they've evolved. They walk now. 👕🚶", "I've started charging admission to see 'The Forgotten Laundry of Apartment 3B' 🎟️", "Archaeologists want to study your laundry. It's technically an artifact now 🏺"],
+                5: ["I've donated your laundry to science. They're studying extreme neglect 🧬", "Your laundry has filed for emancipation. Court date is Tuesday ⚖️", "Breaking: Your laundry situation made international news. The UN is investigating 🌍", "I've written a 500-page novel about waiting for you to move your laundry. It's a bestseller! 📚"]
             }
         };
+
         function getRandomTemplate(category, pettiness) {
             const messages = templates[category][pettiness];
             return messages[Math.floor(Math.random() * messages.length)];
         }
+
         function addEmojis(text, pettiness) {
             const emojis = ['🙂', '🙃', '😊', '😅', '🤔', '😌', '💕', '✨', '🎉', '👍'];
             const count = pettiness;
@@ -342,28 +343,32 @@
             }
             return result;
         }
+
         function translateMessage() {
             const input = document.getElementById('normalRequest').value.toLowerCase();
             const pettiness = parseInt(document.getElementById('pettinessSlider').value);
             let output = '';
-            let category = '';
+
             if (!input) {
                 output = "Oh, you want me to translate NOTHING? How very zen of you! 🧘‍♀️";
             } else if (input.includes('dish')) {
                 output = getRandomTemplate('dishes', pettiness);
-                category = 'dishes';
             } else if (input.includes('noise') || input.includes('loud') || input.includes('quiet')) {
                 output = getRandomTemplate('noise', pettiness);
-                category = 'noise';
             } else if (input.includes('food') || input.includes('eat') || input.includes('fridge')) {
                 output = getRandomTemplate('food', pettiness);
-                category = 'food';
-            } else if (input.includes('room') || input.includes('space') || input.includes('side') || input.includes('stuff')) {
-                output = getRandomTemplate('room', pettiness);
-                category = 'room';
             } else if (input.includes('clean') || input.includes('mess')) {
                 output = getRandomTemplate('cleaning', pettiness);
-                category = 'cleaning';
+            } else if (input.includes('bathroom') || input.includes('toilet') || input.includes('shower')) {
+                output = getRandomTemplate('bathroom', pettiness);
+            } else if (input.includes('temperature') || input.includes('thermostat') || input.includes('hot') || input.includes('cold') || input.includes('freezing')) {
+                output = getRandomTemplate('thermostat', pettiness);
+            } else if (input.includes('guest') || input.includes('friend') || input.includes('visitor') || input.includes('overnight')) {
+                output = getRandomTemplate('guests', pettiness);
+            } else if (input.includes('park') || input.includes('car') || input.includes('spot')) {
+                output = getRandomTemplate('parking', pettiness);
+            } else if (input.includes('laundry') || input.includes('washer') || input.includes('dryer') || input.includes('clothes')) {
+                output = getRandomTemplate('laundry', pettiness);
             } else {
                 // Generic passive aggressive response
                 const generic = [
@@ -378,9 +383,10 @@
                     output += ` (This is sarcasm, in case you couldn't tell)`;
                 }
             }
-            displayOutput(output, false, category ? `generated-${category}` : '');
-            updateGameStats(pettiness);
+
+            displayOutput(output);
         }
+
         function generateFridgeNote() {
             const pettiness = parseInt(document.getElementById('pettinessSlider').value);
             const notes = [
@@ -389,196 +395,78 @@
                 `OFFICIAL FRIDGE RULES:\n1. If you didn't buy it, DON'T EAT IT\n2. See rule #1\n3. SERIOUSLY, SEE RULE #1\n4. I will find you\n5. And I will passive aggressively text you`,
                 `Dear Food Thief,\nI've licked everything in this fridge.\nEnjoy! 😘\n- Your Roommate`,
                 `CRIME SCENE - DO NOT CROSS\n🍕 Victim: Leftover Pizza\n🕐 Time of Death: Between 2am-6am\n👤 Suspect: YOU\n📸 Evidence: Your guilty face right now`
-            ];     
+            ];
+            
             const note = notes[Math.min(pettiness - 1, notes.length - 1)];
             displayOutput(note, true);
-            updateGameStats(pettiness);
         }
+
         function generateChoreChart() {
             const pettiness = parseInt(document.getElementById('pettinessSlider').value);
             const sadEmojis = ['😢', '😭', '💔', '😔', '😞'];
-            const multiplier = pettiness;    
+            const multiplier = pettiness;
+            
             let chart = `📋 CHORE CHART OF DISAPPOINTMENT 📋\n\n`;
             chart += `DISHES: Not done ${sadEmojis[0].repeat(multiplier)}\n`;
             chart += `VACUUM: Hasn't seen action in 3 weeks ${sadEmojis[1].repeat(multiplier)}\n`;
             chart += `BATHROOM: Developing its own ecosystem ${sadEmojis[2].repeat(multiplier)}\n`;
             chart += `TRASH: Achieving sentience ${sadEmojis[3].repeat(multiplier)}\n`;
-            chart += `MY WILL TO LIVE: Decreasing daily ${sadEmojis[4].repeat(multiplier)}\n\n`;   
+            chart += `MY WILL TO LIVE: Decreasing daily ${sadEmojis[4].repeat(multiplier)}\n\n`;
+            
             if (pettiness >= 4) {
                 chart += `*Your mother has been notified of your performance*`;
-            }   
+            }
+            
             displayOutput(chart, true);
-            updateGameStats(pettiness);
         }
+
         function generateNoiseComplaint() {
             const pettiness = parseInt(document.getElementById('pettinessSlider').value);
-            let complaint = '';   
+            let complaint = '';
+            
             if (pettiness <= 2) {
                 complaint = `Dear Roommate,\nYour music is a bit loud. Could you turn it down?\nThanks!\n- Your Slightly Sleepy Roommate`;
             } else if (pettiness === 3) {
                 complaint = `Dearest Companion of the Shared Dwelling,\n\nIt appears thou hast forgotten that these walls are but paper-thin veils between our souls! Your midnight revelry pierces through like Thor's hammer upon the anvil of my SANITY!\n\nYours in exhaustion,\n- The Ghost of Your Former Roommate`;
             } else {
                 complaint = `To Whom It May Concern (YOU):\n\nACT I: The Thumping\nHark! What sound through yonder wall breaks?\nIt is the bass, and you are the DJ!\n\nACT II: The Suffering  \nTo sleep, perchance to dream? NAY!\nFor in that sleep, what drums may come!\n\nACT III: The Revenge\nI've downloaded bagpipe music.\n6am is going to be VERY fun for you.\n\nFIN 🎭`;
-            }    
+            }
+            
             displayOutput(complaint, true);
-            updateGameStats(pettiness);
         }
+
         function generateSubliminal() {
-            const pettiness = parseInt(document.getElementById('pettinessSlider').value); 
             const links = [
-                { title: "How to Load a Dishwasher Properly", id: "dQw4w9WgXcQ" },
-                { title: "Basic Hygiene for Beginners", id: "dQw4w9WgXcQ" },
-                { title: "Why Stealing Food is Wrong - A Children's Guide", id: "dQw4w9WgXcQ" },
-                { title: "Volume Control: A Lost Art", id: "dQw4w9WgXcQ" },
-                { title: "The Importance of Closing Cabinets", id: "dQw4w9WgXcQ" },
-                { title: "How to Use Headphones: Tutorial", id: "dQw4w9WgXcQ" },
-                { title: "Cleaning 101: Yes, You Need To Do It", id: "dQw4w9WgXcQ" },
-                { title: "Personal Space and Boundaries for Dummies", id: "dQw4w9WgXcQ" },
-                { title: "10 Signs You're a Bad Roommate", id: "dQw4w9WgXcQ" },
-                { title: "How to Respect Other People's Property", id: "dQw4w9WgXcQ" }
-            ]; 
-            const selected = links[Math.floor(Math.random() * links.length)];
-            const youtubeUrl = `https://www.youtube.com/watch?v=${selected.id}`;
-            const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(youtubeUrl)}&bgcolor=FFFACD&color=764ba2&format=svg`;
-            let output = `<div style="text-align: center; padding: 20px; background: #fef3cd; border-radius: 10px;">`;
-            output += `<h3>🔗 SUBLIMINAL MESSAGE QR CODE 🔗</h3>`;
-            output += `<p style="font-weight: bold; color: #764ba2;">Video: "${selected.title}"</p>`;
-            output += `<div style="margin: 20px 0;">`;
-            output += `<img src="${qrApiUrl}" alt="QR Code" style="border: 5px solid #764ba2; border-radius: 10px; background: white; padding: 10px;">`;
-            output += `</div>`;
-            output += `<p style="font-size: 14px; color: #666;">Actual Link: ${youtubeUrl}</p>`;
-            if (pettiness >= 3) {
-                output += `<p style="color: #d63384; font-weight: bold;">⚠️ WARNING: This is totally NOT a rickroll... 😇</p>`;
-            }
-            output += `<div style="margin-top: 15px;">`;
-            output += `<p style="font-weight: bold;">Instructions:</p>`;
-            output += `<ol style="text-align: left; display: inline-block;">`;
-            output += `<li>Right-click and save the QR code</li>`;
-            output += `<li>Print on sticky paper</li>`;
-            output += `<li>Place strategically on their stuff</li>`;
-            output += `<li>Wait for confused scanning</li>`;
-            output += `<li>Deny everything</li>`;
-            output += `</ol>`;
-            output += `</div>`;
-            if (pettiness >= 4) {
-                output += `<p style="margin-top: 15px; font-size: 12px; color: #999;">Alternative: Make this their WiFi password QR code 😈</p>`;
-            } 
-            output += `</div>`;   
-            displayOutput(output, false);
-            updateGameStats(pettiness * 1.8);
-        }
-        function generateVenmoRequest() {
-            const pettiness = parseInt(document.getElementById('pettinessSlider').value);
-            const amounts = ['$0.37', '$1.23', '$0.89', '$2.47', '$0.03'];
-            const reasons = [
-                `"For the 3 squares of toilet paper you used"`,
-                `"Electricity for charging your phone for 7 minutes"`,
-                `"Wear and tear on the doorknob (your share)"`,
-                `"Oxygen consumption in common areas"`,
-                `"Emotional damages from your existence"`,
-                `"That one ice cube you took from MY ice tray"`,
-                `"WiFi usage while you thought about my food"`,
-                `"Depreciation of apartment value due to your vibe"`
-            ];  
-            let output = `<div class="venmo-request">`;
-            output += `<h3>💳 Venmo Request Sent!</h3>`;
-            output += `<p>Amount: ${amounts[pettiness - 1]}</p>`;
-            output += `<p>For: ${reasons[Math.floor(Math.random() * reasons.length)]}</p>`;
-            if (pettiness >= 4) {
-                output += `<p>Note: "This is NOT a joke. Pay immediately or I'm adding interest."</p>`;
-            }
-            output += `<p style="font-size: 12px; opacity: 0.8;">Request #${Math.floor(Math.random() * 1000)}</p>`;
-            output += `</div>`;
-            
-            displayOutput(output, false, 'venmo-generated');
-            updateGameStats(pettiness * 2);
-        }
-        function generateGroupChat() {
-            const pettiness = parseInt(document.getElementById('pettinessSlider').value);
-            const groupNames = [
-                "🏠 Apartment Drama 🏠",
-                "Everyone Except [Roommate]",
-                "Roommate Intervention Squad",
-                "[Roommate] Sucks And Here's Why"
-            ];    
-            let output = `<div class="group-chat">`;
-            output += `<h3>📱 ${groupNames[Math.min(pettiness - 1, groupNames.length - 1)]}</h3>`;
-            output += `<p><b>You:</b> Hey everyone! Quick question...</p>`;
-            
-            if (pettiness <= 2) {
-                output += `<p><b>You:</b> Is it normal for roommates to never do dishes? Asking for a friend 😊</p>`;
-            } else if (pettiness === 3) {
-                output += `<p><b>You:</b> [Roommate] hasn't cleaned in 3 weeks. I'm starting a spreadsheet. Who wants access?</p>`;
-            } else if (pettiness === 4) {
-                output += `<p><b>You:</b> EMERGENCY MEETING. Topics: 1) The Dishes 2) The Smell 3) My Sanity</p>`;
-                output += `<p><b>Friend:</b> Again???</p>`;
-                output += `<p><b>You:</b> AGAIN.</p>`;
-            } else {
-                output += `<p><b>You:</b> I've contacted [Roommate]'s parents. Screenshots incoming...</p>`;
-                output += `<p><b>You:</b> [Photo of sink]</p>`;
-                output += `<p><b>You:</b> [Photo of trash]</p>`;
-                output += `<p><b>You:</b> [17 more photos]</p>`;
-                output += `<p><b>Mom:</b> Is this why you needed my number?</p>`;
-                output += `<p><b>You:</b> Yes.</p>`;
-            }    
-            output += `</div>`;
-            displayOutput(output, false, 'groupchat-generated');
-            updateGameStats(pettiness * 1.5);
-        }
-        function generateDoorSign() {
-            const pettiness = parseInt(document.getElementById('pettinessSlider').value);
-            const signs = [
-                `<div class="door-sign">⚠️ CAUTION ⚠️<br>RESPONSIBLE ADULT AT WORK<br>(That's me, not you)</div>`,
-                `<div class="door-sign">🚫 DO NOT DISTURB 🚫<br>Recovering from your life choices</div>`,
-                `<div class="door-sign">⛔ QUARANTINE ZONE ⛔<br>Contaminated by your BS</div>`,
-                `<div class="door-sign">🔴 ENTER AT OWN RISK 🔴<br>May contain: Adult who does dishes</div>`,
-                `<div class="door-sign">☠️ DANGER ☠️<br>EXTREME LEVELS OF DONE-WITH-YOUR-CRAP DETECTED</div>`
+                "How to Load a Dishwasher Properly",
+                "Basic Hygiene for Beginners",
+                "Why Stealing Food is Wrong - A Children's Guide",
+                "Volume Control: A Lost Art",
+                "The Importance of Closing Cabinets",
+                "How to Use Headphones: Tutorial",
+                "Cleaning 101: Yes, You Need To Do It",
+                "Personal Space and Boundaries for Dummies"
             ];
-            displayOutput(signs[pettiness - 1], false);
-            updateGameStats(pettiness * 1.2);
+            
+            const selectedLink = links[Math.floor(Math.random() * links.length)];
+            const fakeUrl = `youtube.com/watch?v=${Math.random().toString(36).substring(7)}`;
+            
+            const output = `🔗 QR CODE GENERATED! 🔗\n\nLink: ${fakeUrl}\nVideo Title: "${selectedLink}"\n\n[QR CODE PLACEHOLDER]\n██████████████\n██░░░░░░░░░░██\n██░██████████░██\n██░██░░░░░░██░██\n██░██░████░██░██\n██░██░░░░░░██░██\n██░██████████░██\n██░░░░░░░░░░░░██\n██████████████\n\nPrint and leave strategically around the apartment! 😇`;
+            
+            displayOutput(output, true);
         }
-        function updateGameStats(points) {
-            generationCount++;
-            totalRageScore += points;
-            document.getElementById('rageScore').textContent = totalRageScore.toFixed(1);
-            let level = '';
-            if (totalRageScore < 10) level = 'Just Getting Started';
-            else if (totalRageScore < 30) level = 'Mildly Irritated';
-            else if (totalRageScore < 50) level = 'Properly Annoyed';
-            else if (totalRageScore < 75) level = 'Full Rage Mode';
-            else if (totalRageScore < 100) level = 'Nuclear Option Considered';
-            else level = '🔥 ROOMMATE APOCALYPSE 🔥';
-            document.getElementById('rageLevel').textContent = level;
-            checkAchievements();
-        }
-        function checkAchievements() {
-            const achievementDiv = document.getElementById('achievements');    
-            for (let [key, achievement] of Object.entries(achievementList)) {
-                if (!achievements.has(key) && achievement.condition()) {
-                    achievements.add(key);
-                    const span = document.createElement('span');
-                    span.className = 'achievement';
-                    span.textContent = achievement.name;
-                    achievementDiv.appendChild(span);
-                }
-            }
-        }
-        function displayOutput(text, isNote = false, className = '') {
+
+        function displayOutput(text, isNote = false) {
             const outputDiv = document.getElementById('output');
             if (isNote) {
-                outputDiv.innerHTML = `<div class="sticky-note ${className}"><pre style="font-family: 'Comic Sans MS', cursive; white-space: pre-wrap;">${text}</pre><button class="copy-button" onclick="copyToClipboard('${text.replace(/'/g, "\\'")}')">Copy to Clipboard</button></div>`;
-            } else if (text.includes('venmo-request') || text.includes('group-chat') || text.includes('door-sign')) {
-                outputDiv.innerHTML = text + `<button class="copy-button" style="margin-top: 10px;" onclick="copyToClipboard('${text.replace(/<[^>]*>/g, '').replace(/'/g, "\\'")}')">Copy Text</button>`;
+                outputDiv.innerHTML = `<div class="sticky-note"><pre style="font-family: 'Comic Sans MS', cursive; white-space: pre-wrap;">${text}</pre><button class="copy-button" onclick="copyToClipboard('${text.replace(/'/g, "\\'")}')">Copy to Clipboard</button></div>`;
             } else {
-                outputDiv.innerHTML = `<div class="sticky-note ${className}">${text}<br><button class="copy-button" onclick="copyToClipboard('${text.replace(/'/g, "\\'")}')">Copy to Clipboard</button></div>`;
+                outputDiv.innerHTML = `<div class="sticky-note">${text}<br><button class="copy-button" onclick="copyToClipboard('${text.replace(/'/g, "\\'")}')">Copy to Clipboard</button></div>`;
             }
         }
+
         function copyToClipboard(text) {
-            event.target.classList.add('copied');
-            
             navigator.clipboard.writeText(text).then(() => {
                 alert('Copied! Now go paste it on their door! 😈');
-                checkAchievements();
             });
         }
     </script>
