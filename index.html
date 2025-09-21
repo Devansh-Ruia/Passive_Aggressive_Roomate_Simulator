@@ -288,6 +288,12 @@
                 <button onclick="generateViralPost()" style="background: linear-gradient(135deg, #FF4500 0%, #1DA1F2 100%);">🔥 Generate Viral Post</button>
             </div>
 
+            <div style="text-align: center; margin: 15px 0;">
+                <button onclick="toggleMute()" style="background: #6b7280; padding: 8px 15px; border-radius: 20px; color: white; border: none; cursor: pointer; font-size: 14px;">
+                    <span id="muteButton">🔊 Sound On</span>
+                </button>
+            </div>
+
             <div class="output-section" id="output">
                 <p style="color: #999; text-align: center;">Your passive aggressive masterpiece will appear here...</p>
             </div>
@@ -295,6 +301,218 @@
     </div>
 
     <script>
+        // Create audio context and sound effects
+        let audioContext;
+        let isMuted = false;
+
+        function initAudio() {
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
+        }
+
+        // Create different sound effects
+        function playTypewriterSound() {
+            if (isMuted) return;
+            initAudio();
+            
+            // Create a more mechanical typewriter sound
+            const duration = 0.05;
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.value = 800 + Math.random() * 400;
+            oscillator.type = 'square';
+            
+            gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + duration);
+
+            // Add a click sound
+            const clickOsc = audioContext.createOscillator();
+            const clickGain = audioContext.createGain();
+            
+            clickOsc.connect(clickGain);
+            clickGain.connect(audioContext.destination);
+            
+            clickOsc.frequency.value = 4000;
+            clickOsc.type = 'sine';
+            
+            clickGain.gain.setValueAtTime(0.05, audioContext.currentTime);
+            clickGain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.01);
+            
+            clickOsc.start(audioContext.currentTime);
+            clickOsc.stop(audioContext.currentTime + 0.01);
+        }
+
+        function playDingSound() {
+            if (isMuted) return;
+            initAudio();
+            
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
+            oscillator.frequency.exponentialRampToValueAtTime(1200, audioContext.currentTime + 0.1);
+            oscillator.frequency.exponentialRampToValueAtTime(1000, audioContext.currentTime + 0.3);
+            oscillator.type = 'sine';
+            
+            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.5);
+        }
+
+        function playAngrySound() {
+            if (isMuted) return;
+            initAudio();
+            
+            // Lower, more ominous sound for higher pettiness
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            const distortion = audioContext.createWaveShaper();
+            
+            // Create distortion curve
+            const samples = 44100;
+            const curve = new Float32Array(samples);
+            const deg = Math.PI / 180;
+            for (let i = 0; i < samples; i++) {
+                const x = (i * 2) / samples - 1;
+                curve[i] = ((3 + 10) * x * 20 * deg) / (Math.PI + 10 * Math.abs(x));
+            }
+            distortion.curve = curve;
+            
+            oscillator.connect(distortion);
+            distortion.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.setValueAtTime(100, audioContext.currentTime);
+            oscillator.frequency.exponentialRampToValueAtTime(50, audioContext.currentTime + 0.3);
+            oscillator.type = 'sawtooth';
+            
+            gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.5);
+        }
+
+        function playPaperSound() {
+            if (isMuted) return;
+            initAudio();
+            
+            // Crinkly paper sound using noise
+            const bufferSize = audioContext.sampleRate * 0.2;
+            const buffer = audioContext.createBuffer(1, bufferSize, audioContext.sampleRate);
+            const output = buffer.getChannelData(0);
+            
+            for (let i = 0; i < bufferSize; i++) {
+                output[i] = (Math.random() * 2 - 1) * 0.1;
+            }
+            
+            const noise = audioContext.createBufferSource();
+            const filter = audioContext.createBiquadFilter();
+            const gainNode = audioContext.createGain();
+            
+            noise.buffer = buffer;
+            
+            filter.type = 'highpass';
+            filter.frequency.setValueAtTime(3000, audioContext.currentTime);
+            filter.frequency.exponentialRampToValueAtTime(5000, audioContext.currentTime + 0.2);
+            
+            noise.connect(filter);
+            filter.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.2);
+            
+            noise.start();
+        }
+
+        function playSliderSound(value) {
+            if (isMuted) return;
+            initAudio();
+            
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            // Higher pitch for higher pettiness
+            oscillator.frequency.value = 200 + (value * 200);
+            oscillator.type = 'sine';
+            
+            gainNode.gain.setValueAtTime(0.05, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.1);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.1);
+        }
+
+        async function typewriterEffect(text, elementId, callback) {
+            const element = document.getElementById(elementId);
+            if (!element) return;
+            
+            const pettiness = parseInt(document.getElementById('pettinessSlider').value);
+            const baseDelay = 50;
+            const delay = baseDelay - (pettiness * 8); // Faster typing for angrier messages
+            
+            // Play initial paper sound
+            playPaperSound();
+            
+            let currentText = '';
+            for (let i = 0; i < text.length; i++) {
+                currentText += text[i];
+                
+                // Create the display with buttons
+                element.innerHTML = `
+                    <div class="sticky-note">
+                        ${currentText}
+                        ${i === text.length - 1 ? `<br>
+                        <button class="copy-button" onclick="copyToClipboard('${text.replace(/'/g, "\\'").replace(/\n/g, "\\n")}')">Copy to Clipboard</button>
+                        <div class="social-share-buttons">
+                            <button class="social-button twitter" onclick="shareToTwitter('${encodeURIComponent(text.substring(0, 200))}')">
+                                🐦 Share on X
+                            </button>
+                            <button class="social-button reddit" onclick="shareToReddit('${encodeURIComponent(text.substring(0, 200))}')">
+                                👽 Post to Reddit
+                            </button>
+                            <button class="social-button facebook" onclick="shareToFacebook()">
+                                📘 Share on Facebook
+                            </button>
+                        </div>` : ''}
+                    </div>
+                `;
+                
+                // Play sound effect occasionally
+                if (Math.random() < 0.3 || text[i] === '!' || text[i] === '?' || text[i] === '.') {
+                    playTypewriterSound();
+                }
+                
+                await new Promise(resolve => setTimeout(resolve, delay));
+            }
+            
+            // Play completion sound based on pettiness
+            if (pettiness >= 4) {
+                playAngrySound();
+            } else {
+                playDingSound();
+            }
+            
+            if (callback) callback();
+        }
+
         // Pettiness level descriptions
         const pettinessLevels = {
             1: "Midwest Nice",
@@ -304,9 +522,10 @@
             5: "PhD Student in 7th Year"
         };
 
-        // Update pettiness label
+        // Update pettiness label with sound
         document.getElementById('pettinessSlider').addEventListener('input', (e) => {
             document.getElementById('pettinessLabel').textContent = pettinessLevels[e.target.value];
+            playSliderSound(e.target.value);
         });
 
         // Template responses based on pettiness level
@@ -391,6 +610,11 @@
             return result;
         }
 
+        function toggleMute() {
+            isMuted = !isMuted;
+            document.getElementById('muteButton').textContent = isMuted ? '🔇 Sound Off' : '🔊 Sound On';
+        }
+
         function translateMessage() {
             const input = document.getElementById('normalRequest').value.toLowerCase();
             const pettiness = parseInt(document.getElementById('pettinessSlider').value);
@@ -431,7 +655,8 @@
                 }
             }
 
-            displayOutput(output);
+            // Use typewriter effect for the output
+            typewriterEffect(output, 'output');
         }
 
         function generateFridgeNote() {
@@ -445,7 +670,17 @@
             ];
             
             const note = notes[Math.min(pettiness - 1, notes.length - 1)];
-            displayOutput(note, true);
+            
+            // Play paper sound and then typewriter effect
+            playPaperSound();
+            setTimeout(() => {
+                displayOutput(note, true);
+                if (pettiness >= 4) {
+                    setTimeout(playAngrySound, 300);
+                } else {
+                    setTimeout(playDingSound, 300);
+                }
+            }, 200);
         }
 
         function generateChoreChart() {
@@ -464,7 +699,27 @@
                 chart += `*Your mother has been notified of your performance*`;
             }
             
-            displayOutput(chart, true);
+            playPaperSound();
+            setTimeout(() => {
+                displayOutput(chart, true);
+                // Play multiple sad sounds for dramatic effect
+                for (let i = 0; i < 3; i++) {
+                    setTimeout(() => {
+                        if (!isMuted) {
+                            initAudio();
+                            const osc = audioContext.createOscillator();
+                            const gain = audioContext.createGain();
+                            osc.connect(gain);
+                            gain.connect(audioContext.destination);
+                            osc.frequency.value = 400 - (i * 50);
+                            gain.gain.setValueAtTime(0.1, audioContext.currentTime);
+                            gain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.3);
+                            osc.start();
+                            osc.stop(audioContext.currentTime + 0.3);
+                        }
+                    }, i * 200);
+                }
+            }, 200);
         }
 
         function generateNoiseComplaint() {
@@ -479,7 +734,13 @@
                 complaint = `To Whom It May Concern (YOU):\n\nACT I: The Thumping\nHark! What sound through yonder wall breaks?\nIt is the bass, and you are the DJ!\n\nACT II: The Suffering  \nTo sleep, perchance to dream? NAY!\nFor in that sleep, what drums may come!\n\nACT III: The Revenge\nI've downloaded bagpipe music.\n6am is going to be VERY fun for you.\n\nFIN 🎭`;
             }
             
-            displayOutput(complaint, true);
+            // Play dramatic sound effects
+            if (pettiness >= 3) {
+                playAngrySound();
+            }
+            setTimeout(() => {
+                typewriterEffect(complaint, 'output');
+            }, 200);
         }
 
         function generateSubliminal() {
