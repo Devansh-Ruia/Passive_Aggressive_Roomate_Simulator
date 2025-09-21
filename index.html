@@ -299,7 +299,7 @@
 
         <div class="card" style="background: #fef3cd; border: 3px solid #ffc107;">
             <h2 style="text-align: center; color: #856404;">🏆 Roommate Rage Score 🏆</h2>
-            <div style="text-align: center; font-size: 48px; margin: 20px 0;" id="rageScore">0</div>
+            <div style="text-align: center; font-size: 48px; margin: 20px 0;" id="rageScore">0.0</div>
             <p style="text-align: center; color: #856404;" id="rageLevel">Generate some passive aggression to begin!</p>
             <div style="margin-top: 20px;">
                 <h3 style="color: #856404;">Achievement Unlocked:</h3>
@@ -623,8 +623,8 @@
             generationCount++;
             totalRageScore += points;
             
-            // Update score display
-            document.getElementById('rageScore').textContent = totalRageScore;
+            // Update score display - round to 1 decimal place
+            document.getElementById('rageScore').textContent = totalRageScore.toFixed(1);
             
             // Update rage level
             let level = '';
