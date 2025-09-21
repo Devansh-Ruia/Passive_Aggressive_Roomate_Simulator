@@ -246,6 +246,13 @@
                 4: ["I've filed a police report for the THEFT of my leftover pad thai. Case #2024-SERIOUSLY-STOP 👮", "Started a GoFundMe for my stolen groceries. Already raised $3.50! That's YOUR lunch tomorrow! 💰"],
                 5: ["I've contacted the FBI, CIA, and my MOM about the food situation. They're ALL very disappointed in you 😤", "Your food theft has been submitted to the International Criminal Court. War crimes include: eating my LABELED burrito 🌯⚖️"]
             },
+            room: {
+                1: ["Hey! Just wondering if you could keep your things on your side? Thanks! 😊", "Would love to have a bit more space in the common area! 🙂"],
+                2: ["Interesting how your stuff has started a colonial expansion into my side 🗺️", "I see we're playing 'the floor is storage'! Fun game! 🎮"],
+                3: ["Your belongings have annexed my side of the room. I'm drafting a UN resolution 🏳️", "I've started charging your stuff rent for occupying my space. You owe me $47.83 💸"],
+                4: ["I've drawn a border with police tape. Your socks violated the treaty THREE times today 🚧", "Built a wall out of your dirty laundry. Making YOU pay for it. It's gonna be YUGE! 🧱"],
+                5: ["I've hired a surveyor to establish property lines. Your underwear is in violation of city ordinances 📐", "Contacted Border Patrol about your stuff's illegal immigration to my side. They're bringing dogs 🚔"]
+            },
             cleaning: {
                 1: ["Would love some help with cleaning when you get a chance! 😊", "The common area could use a little TLC! 🧹"],
                 2: ["I see we're going for that 'lived-in' look! Very authentic! 🏚️", "The vacuum misses you! It asked about you yesterday 🙃"],
@@ -279,6 +286,8 @@
                 output = getRandomTemplate('noise', pettiness);
             } else if (input.includes('food') || input.includes('eat') || input.includes('fridge')) {
                 output = getRandomTemplate('food', pettiness);
+            } else if (input.includes('room') || input.includes('space') || input.includes('side') || input.includes('stuff')) {
+                output = getRandomTemplate('room', pettiness);
             } else if (input.includes('clean') || input.includes('mess')) {
                 output = getRandomTemplate('cleaning', pettiness);
             } else {
@@ -304,23 +313,23 @@
                 `OFFICIAL FRIDGE RULES:\n1. If you didn't buy it, DON'T EAT IT\n2. See rule #1\n3. SERIOUSLY, SEE RULE #1\n4. I will find you\n5. And I will passive aggressively text you`,
                 `Dear Food Thief,\nI've licked everything in this fridge.\nEnjoy! 😘\n- Your Roommate`,
                 `CRIME SCENE - DO NOT CROSS\n🍕 Victim: Leftover Pizza\n🕐 Time of Death: Between 2am-6am\n👤 Suspect: YOU\n📸 Evidence: Your guilty face right now`
-            ];  
+            ]; 
             const note = notes[Math.min(pettiness - 1, notes.length - 1)];
             displayOutput(note, true);
         }
         function generateChoreChart() {
             const pettiness = parseInt(document.getElementById('pettinessSlider').value);
             const sadEmojis = ['😢', '😭', '💔', '😔', '😞'];
-            const multiplier = pettiness;           
+            const multiplier = pettiness;
             let chart = `📋 CHORE CHART OF DISAPPOINTMENT 📋\n\n`;
             chart += `DISHES: Not done ${sadEmojis[0].repeat(multiplier)}\n`;
             chart += `VACUUM: Hasn't seen action in 3 weeks ${sadEmojis[1].repeat(multiplier)}\n`;
             chart += `BATHROOM: Developing its own ecosystem ${sadEmojis[2].repeat(multiplier)}\n`;
             chart += `TRASH: Achieving sentience ${sadEmojis[3].repeat(multiplier)}\n`;
-            chart += `MY WILL TO LIVE: Decreasing daily ${sadEmojis[4].repeat(multiplier)}\n\n`;         
+            chart += `MY WILL TO LIVE: Decreasing daily ${sadEmojis[4].repeat(multiplier)}\n\n`;
             if (pettiness >= 4) {
                 chart += `*Your mother has been notified of your performance*`;
-            }        
+            }
             displayOutput(chart, true);
         }
         function generateNoiseComplaint() {
@@ -345,7 +354,7 @@
                 "How to Use Headphones: Tutorial",
                 "Cleaning 101: Yes, You Need To Do It",
                 "Personal Space and Boundaries for Dummies"
-            ];
+            ]; 
             const selectedLink = links[Math.floor(Math.random() * links.length)];
             const fakeUrl = `youtube.com/watch?v=${Math.random().toString(36).substring(7)}`;
             
