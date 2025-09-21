@@ -10,19 +10,16 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: 'Comic Sans MS', cursive, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
         }
-
         .container {
             max-width: 800px;
             margin: 0 auto;
         }
-
         h1 {
             text-align: center;
             color: white;
@@ -31,20 +28,17 @@
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
             animation: passive-aggressive-shake 2s infinite;
         }
-
         @keyframes passive-aggressive-shake {
             0%, 100% { transform: translateX(0); }
             25% { transform: translateX(-2px); }
             75% { transform: translateX(2px); }
         }
-
         .subtitle {
             text-align: center;
             color: #ffd700;
             margin-bottom: 30px;
             font-size: 1.2em;
         }
-
         .card {
             background: white;
             border-radius: 15px;
@@ -53,22 +47,18 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             transition: transform 0.3s;
         }
-
         .card:hover {
             transform: translateY(-5px);
         }
-
         .input-section {
             margin-bottom: 20px;
         }
-
         label {
             display: block;
             margin-bottom: 10px;
             font-weight: bold;
             color: #333;
         }
-
         input[type="text"], textarea {
             width: 100%;
             padding: 12px;
@@ -77,23 +67,19 @@
             font-size: 16px;
             font-family: Arial, sans-serif;
         }
-
         textarea {
             min-height: 100px;
             resize: vertical;
         }
-
         .pettiness-section {
             margin: 20px 0;
         }
-
         .slider-container {
             display: flex;
             align-items: center;
             gap: 15px;
             margin-top: 10px;
         }
-
         input[type="range"] {
             flex: 1;
             -webkit-appearance: none;
@@ -102,7 +88,6 @@
             background: linear-gradient(to right, #4ade80 0%, #fbbf24 50%, #ef4444 100%);
             outline: none;
         }
-
         input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
@@ -113,20 +98,17 @@
             cursor: pointer;
             border: 3px solid #764ba2;
         }
-
         .pettiness-label {
             font-weight: bold;
             color: #764ba2;
             min-width: 180px;
         }
-
         .feature-buttons {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
             margin: 20px 0;
         }
-
         button {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -138,16 +120,13 @@
             transition: all 0.3s;
             font-weight: bold;
         }
-
         button:hover {
             transform: scale(1.05);
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
-
         button:active {
             transform: scale(0.95);
         }
-
         .output-section {
             margin-top: 30px;
             padding: 20px;
@@ -157,7 +136,6 @@
             min-height: 100px;
             position: relative;
         }
-
         .sticky-note {
             background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
             padding: 20px;
@@ -171,11 +149,9 @@
             transform: rotate(-1deg);
             transition: transform 0.3s;
         }
-
         .sticky-note:hover {
             transform: rotate(0deg) scale(1.02);
         }
-
         .sticky-note::before {
             content: "📌";
             position: absolute;
@@ -183,25 +159,21 @@
             right: 10px;
             font-size: 24px;
         }
-
         .emoji-spam {
             margin: 0 2px;
             display: inline-block;
             animation: emoji-dance 1s infinite;
         }
-
         @keyframes emoji-dance {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-5px); }
         }
-
         .copy-button {
             background: #10b981;
             padding: 8px 15px;
             font-size: 14px;
             margin-top: 10px;
         }
-
         .social-share-buttons {
             display: flex;
             gap: 10px;
@@ -209,7 +181,6 @@
             flex-wrap: wrap;
             justify-content: center;
         }
-
         .social-button {
             padding: 10px 15px;
             font-size: 14px;
@@ -220,40 +191,32 @@
             font-weight: bold;
             color: white;
         }
-
         .social-button.twitter {
             background: #1DA1F2;
         }
-
         .social-button.twitter:hover {
             background: #0d8bd9;
             transform: scale(1.05);
         }
-
         .social-button.reddit {
             background: #FF4500;
         }
-
         .social-button.reddit:hover {
             background: #e63e00;
             transform: scale(1.05);
         }
-
         .social-button.facebook {
             background: #4267B2;
         }
-
         .social-button.facebook:hover {
             background: #365899;
             transform: scale(1.05);
         }
-
         .loading {
             text-align: center;
             color: #666;
             font-style: italic;
         }
-
         #qrcode {
             margin: 20px auto;
             text-align: center;
@@ -264,13 +227,11 @@
     <div class="container">
         <h1>Passive Aggressive Roommate Simulator 🙃</h1>
         <p class="subtitle">Because direct communication is SO last year</p>
-
         <div class="card">
             <div class="input-section">
                 <label for="normalRequest">Type your NORMAL request (what you'd actually want to say):</label>
                 <textarea id="normalRequest" placeholder="Example: Please wash your dishes"></textarea>
             </div>
-
             <div class="pettiness-section">
                 <label>Pettiness Level:</label>
                 <div class="slider-container">
@@ -278,7 +239,6 @@
                     <span class="pettiness-label" id="pettinessLabel">Fed Up</span>
                 </div>
             </div>
-
             <div class="feature-buttons">
                 <button onclick="translateMessage()">🔄 Translate to Passive Aggressive</button>
                 <button onclick="generateFridgeNote()">🧊 Generate Fridge Note</button>
@@ -287,101 +247,71 @@
                 <button onclick="generateSubliminal()">👁️ Subliminal Message QR</button>
                 <button onclick="generateViralPost()" style="background: linear-gradient(135deg, #FF4500 0%, #1DA1F2 100%);">🔥 Generate Viral Post</button>
             </div>
-
             <div style="text-align: center; margin: 15px 0;">
                 <button onclick="toggleMute()" style="background: #6b7280; padding: 8px 15px; border-radius: 20px; color: white; border: none; cursor: pointer; font-size: 14px;">
                     <span id="muteButton">🔊 Sound On</span>
                 </button>
             </div>
-
             <div class="output-section" id="output">
                 <p style="color: #999; text-align: center;">Your passive aggressive masterpiece will appear here...</p>
             </div>
         </div>
     </div>
-
     <script>
-        // Create audio context and sound effects
         let audioContext;
         let isMuted = false;
-
         function initAudio() {
             if (!audioContext) {
                 audioContext = new (window.AudioContext || window.webkitAudioContext)();
             }
         }
-
-        // Create different sound effects
         function playTypewriterSound() {
             if (isMuted) return;
             initAudio();
-            
-            // Create a more mechanical typewriter sound
             const duration = 0.05;
             const oscillator = audioContext.createOscillator();
-            const gainNode = audioContext.createGain();
-            
+            const gainNode = audioContext.createGain();           
             oscillator.connect(gainNode);
-            gainNode.connect(audioContext.destination);
-            
+            gainNode.connect(audioContext.destination);           
             oscillator.frequency.value = 800 + Math.random() * 400;
-            oscillator.type = 'square';
-            
+            oscillator.type = 'square';           
             gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
-            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration);
-            
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration);           
             oscillator.start(audioContext.currentTime);
             oscillator.stop(audioContext.currentTime + duration);
-
-            // Add a click sound
             const clickOsc = audioContext.createOscillator();
-            const clickGain = audioContext.createGain();
-            
+            const clickGain = audioContext.createGain();   
             clickOsc.connect(clickGain);
-            clickGain.connect(audioContext.destination);
-            
+            clickGain.connect(audioContext.destination);         
             clickOsc.frequency.value = 4000;
-            clickOsc.type = 'sine';
-            
+            clickOsc.type = 'sine';        
             clickGain.gain.setValueAtTime(0.05, audioContext.currentTime);
-            clickGain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.01);
-            
+            clickGain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.01);        
             clickOsc.start(audioContext.currentTime);
             clickOsc.stop(audioContext.currentTime + 0.01);
         }
-
         function playDingSound() {
             if (isMuted) return;
-            initAudio();
-            
+            initAudio();          
             const oscillator = audioContext.createOscillator();
-            const gainNode = audioContext.createGain();
-            
+            const gainNode = audioContext.createGain();           
             oscillator.connect(gainNode);
-            gainNode.connect(audioContext.destination);
-            
+            gainNode.connect(audioContext.destination);           
             oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
             oscillator.frequency.exponentialRampToValueAtTime(1200, audioContext.currentTime + 0.1);
             oscillator.frequency.exponentialRampToValueAtTime(1000, audioContext.currentTime + 0.3);
-            oscillator.type = 'sine';
-            
+            oscillator.type = 'sine';           
             gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
-            
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);           
             oscillator.start(audioContext.currentTime);
             oscillator.stop(audioContext.currentTime + 0.5);
         }
-
         function playAngrySound() {
             if (isMuted) return;
             initAudio();
-            
-            // Lower, more ominous sound for higher pettiness
             const oscillator = audioContext.createOscillator();
             const gainNode = audioContext.createGain();
             const distortion = audioContext.createWaveShaper();
-            
-            // Create distortion curve
             const samples = 44100;
             const curve = new Float32Array(samples);
             const deg = Math.PI / 180;
@@ -389,93 +319,65 @@
                 const x = (i * 2) / samples - 1;
                 curve[i] = ((3 + 10) * x * 20 * deg) / (Math.PI + 10 * Math.abs(x));
             }
-            distortion.curve = curve;
-            
+            distortion.curve = curve;          
             oscillator.connect(distortion);
             distortion.connect(gainNode);
-            gainNode.connect(audioContext.destination);
-            
+            gainNode.connect(audioContext.destination);         
             oscillator.frequency.setValueAtTime(100, audioContext.currentTime);
             oscillator.frequency.exponentialRampToValueAtTime(50, audioContext.currentTime + 0.3);
-            oscillator.type = 'sawtooth';
-            
+            oscillator.type = 'sawtooth';          
             gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
-            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
-            
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);           
             oscillator.start(audioContext.currentTime);
             oscillator.stop(audioContext.currentTime + 0.5);
         }
-
         function playPaperSound() {
             if (isMuted) return;
             initAudio();
-            
-            // Crinkly paper sound using noise
             const bufferSize = audioContext.sampleRate * 0.2;
             const buffer = audioContext.createBuffer(1, bufferSize, audioContext.sampleRate);
-            const output = buffer.getChannelData(0);
-            
+            const output = buffer.getChannelData(0);  
             for (let i = 0; i < bufferSize; i++) {
                 output[i] = (Math.random() * 2 - 1) * 0.1;
-            }
-            
+            } 
             const noise = audioContext.createBufferSource();
             const filter = audioContext.createBiquadFilter();
             const gainNode = audioContext.createGain();
-            
             noise.buffer = buffer;
-            
             filter.type = 'highpass';
             filter.frequency.setValueAtTime(3000, audioContext.currentTime);
             filter.frequency.exponentialRampToValueAtTime(5000, audioContext.currentTime + 0.2);
-            
             noise.connect(filter);
             filter.connect(gainNode);
             gainNode.connect(audioContext.destination);
-            
             gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
-            gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.2);
-            
+            gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.2);   
             noise.start();
         }
-
         function playSliderSound(value) {
             if (isMuted) return;
-            initAudio();
-            
+            initAudio();  
             const oscillator = audioContext.createOscillator();
-            const gainNode = audioContext.createGain();
-            
+            const gainNode = audioContext.createGain();  
             oscillator.connect(gainNode);
             gainNode.connect(audioContext.destination);
-            
-            // Higher pitch for higher pettiness
             oscillator.frequency.value = 200 + (value * 200);
-            oscillator.type = 'sine';
-            
+            oscillator.type = 'sine';          
             gainNode.gain.setValueAtTime(0.05, audioContext.currentTime);
-            gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.1);
-            
+            gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.1);        
             oscillator.start(audioContext.currentTime);
             oscillator.stop(audioContext.currentTime + 0.1);
         }
-
         async function typewriterEffect(text, elementId, callback) {
             const element = document.getElementById(elementId);
-            if (!element) return;
-            
+            if (!element) return;    
             const pettiness = parseInt(document.getElementById('pettinessSlider').value);
             const baseDelay = 50;
-            const delay = baseDelay - (pettiness * 8); // Faster typing for angrier messages
-            
-            // Play initial paper sound
-            playPaperSound();
-            
+            const delay = baseDelay - (pettiness * 8);
+            playPaperSound();     
             let currentText = '';
             for (let i = 0; i < text.length; i++) {
                 currentText += text[i];
-                
-                // Create the display with buttons
                 element.innerHTML = `
                     <div class="sticky-note">
                         ${currentText}
@@ -494,26 +396,19 @@
                         </div>` : ''}
                     </div>
                 `;
-                
-                // Play sound effect occasionally
                 if (Math.random() < 0.3 || text[i] === '!' || text[i] === '?' || text[i] === '.') {
                     playTypewriterSound();
                 }
                 
                 await new Promise(resolve => setTimeout(resolve, delay));
             }
-            
-            // Play completion sound based on pettiness
             if (pettiness >= 4) {
                 playAngrySound();
             } else {
                 playDingSound();
-            }
-            
+            } 
             if (callback) callback();
         }
-
-        // Pettiness level descriptions
         const pettinessLevels = {
             1: "Midwest Nice",
             2: "Slightly Annoyed",
@@ -521,14 +416,10 @@
             4: "Writing a Thesis on Your Failures",
             5: "PhD Student in 7th Year"
         };
-
-        // Update pettiness label with sound
         document.getElementById('pettinessSlider').addEventListener('input', (e) => {
             document.getElementById('pettinessLabel').textContent = pettinessLevels[e.target.value];
             playSliderSound(e.target.value);
         });
-
-        // Template responses based on pettiness level
         const templates = {
             dishes: {
                 1: ["Hey there! Just wanted to mention the dishes in the sink when you get a chance 😊", "No rush on the dishes! Just thought I'd mention them 🙂", "The dishes are waiting for you whenever you're ready! 😊", "Just a friendly reminder about the dishes! ☺️"],
@@ -594,12 +485,10 @@
                 5: ["I've donated your laundry to science. They're studying extreme neglect 🧬", "Your laundry has filed for emancipation. Court date is Tuesday ⚖️", "Breaking: Your laundry situation made international news. The UN is investigating 🌍", "I've written a 500-page novel about waiting for you to move your laundry. It's a bestseller! 📚"]
             }
         };
-
         function getRandomTemplate(category, pettiness) {
             const messages = templates[category][pettiness];
             return messages[Math.floor(Math.random() * messages.length)];
         }
-
         function addEmojis(text, pettiness) {
             const emojis = ['🙂', '🙃', '😊', '😅', '🤔', '😌', '💕', '✨', '🎉', '👍'];
             const count = pettiness;
@@ -609,17 +498,14 @@
             }
             return result;
         }
-
         function toggleMute() {
             isMuted = !isMuted;
             document.getElementById('muteButton').textContent = isMuted ? '🔇 Sound Off' : '🔊 Sound On';
         }
-
         function translateMessage() {
             const input = document.getElementById('normalRequest').value.toLowerCase();
             const pettiness = parseInt(document.getElementById('pettinessSlider').value);
             let output = '';
-
             if (!input) {
                 output = "Oh, you want me to translate NOTHING? How very zen of you! 🧘‍♀️";
             } else if (input.includes('dish')) {
@@ -641,7 +527,6 @@
             } else if (input.includes('laundry') || input.includes('washer') || input.includes('dryer') || input.includes('clothes')) {
                 output = getRandomTemplate('laundry', pettiness);
             } else {
-                // Generic passive aggressive response
                 const generic = [
                     `Oh WOW! "${input}"?? How DELIGHTFUL that you're asking! I'll get RIGHT on that! 🙃`,
                     `Sure thing! Because I LOVE when you "${input}"! It's my FAVORITE! 😊😊😊`,
@@ -654,11 +539,8 @@
                     output += ` (This is sarcasm, in case you couldn't tell)`;
                 }
             }
-
-            // Use typewriter effect for the output
             typewriterEffect(output, 'output');
         }
-
         function generateFridgeNote() {
             const pettiness = parseInt(document.getElementById('pettinessSlider').value);
             const notes = [
@@ -668,10 +550,7 @@
                 `Dear Food Thief,\nI've licked everything in this fridge.\nEnjoy! 😘\n- Your Roommate`,
                 `CRIME SCENE - DO NOT CROSS\n🍕 Victim: Leftover Pizza\n🕐 Time of Death: Between 2am-6am\n👤 Suspect: YOU\n📸 Evidence: Your guilty face right now`
             ];
-            
             const note = notes[Math.min(pettiness - 1, notes.length - 1)];
-            
-            // Play paper sound and then typewriter effect
             playPaperSound();
             setTimeout(() => {
                 displayOutput(note, true);
@@ -682,27 +561,22 @@
                 }
             }, 200);
         }
-
         function generateChoreChart() {
             const pettiness = parseInt(document.getElementById('pettinessSlider').value);
             const sadEmojis = ['😢', '😭', '💔', '😔', '😞'];
             const multiplier = pettiness;
-            
             let chart = `📋 CHORE CHART OF DISAPPOINTMENT 📋\n\n`;
             chart += `DISHES: Not done ${sadEmojis[0].repeat(multiplier)}\n`;
             chart += `VACUUM: Hasn't seen action in 3 weeks ${sadEmojis[1].repeat(multiplier)}\n`;
             chart += `BATHROOM: Developing its own ecosystem ${sadEmojis[2].repeat(multiplier)}\n`;
             chart += `TRASH: Achieving sentience ${sadEmojis[3].repeat(multiplier)}\n`;
             chart += `MY WILL TO LIVE: Decreasing daily ${sadEmojis[4].repeat(multiplier)}\n\n`;
-            
             if (pettiness >= 4) {
                 chart += `*Your mother has been notified of your performance*`;
-            }
-            
+            } 
             playPaperSound();
             setTimeout(() => {
                 displayOutput(chart, true);
-                // Play multiple sad sounds for dramatic effect
                 for (let i = 0; i < 3; i++) {
                     setTimeout(() => {
                         if (!isMuted) {
@@ -721,11 +595,9 @@
                 }
             }, 200);
         }
-
         function generateNoiseComplaint() {
             const pettiness = parseInt(document.getElementById('pettinessSlider').value);
             let complaint = '';
-            
             if (pettiness <= 2) {
                 complaint = `Dear Roommate,\nYour music is a bit loud. Could you turn it down?\nThanks!\n- Your Slightly Sleepy Roommate`;
             } else if (pettiness === 3) {
@@ -733,8 +605,6 @@
             } else {
                 complaint = `To Whom It May Concern (YOU):\n\nACT I: The Thumping\nHark! What sound through yonder wall breaks?\nIt is the bass, and you are the DJ!\n\nACT II: The Suffering  \nTo sleep, perchance to dream? NAY!\nFor in that sleep, what drums may come!\n\nACT III: The Revenge\nI've downloaded bagpipe music.\n6am is going to be VERY fun for you.\n\nFIN 🎭`;
             }
-            
-            // Play dramatic sound effects
             if (pettiness >= 3) {
                 playAngrySound();
             }
@@ -742,7 +612,6 @@
                 typewriterEffect(complaint, 'output');
             }, 200);
         }
-
         function generateSubliminal() {
             const videoTitles = [
                 "How to Load a Dishwasher Properly - A Complete Tutorial",
@@ -760,30 +629,23 @@
                 "Apartment Etiquette: What Your Parents Should Have Taught You",
                 "How to Read Labels on Food Containers",
                 "Understanding Time: Why 2AM is Too Late for Music"
-            ];
-            
+            ]; 
             const selectedTitle = videoTitles[Math.floor(Math.random() * videoTitles.length)];
             const videoId = Math.random().toString(36).substring(2, 13);
             const youtubeUrl = `https://youtube.com/watch?v=${videoId}`;
-            
-            // Create QR code using API
             const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(youtubeUrl)}`;
-            
             const output = `
                 <div style="text-align: center; padding: 20px;">
                     <h3 style="color: #764ba2; margin-bottom: 15px;">🔗 SUBLIMINAL MESSAGE QR CODE GENERATED! 🔗</h3>
-                    
                     <div style="background: white; padding: 20px; border-radius: 10px; display: inline-block; box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
                         <img src="${qrApiUrl}" alt="QR Code" style="display: block; margin: 0 auto;">
                     </div>
-                    
                     <div style="margin-top: 20px; background: #fef3c7; padding: 15px; border-radius: 8px; text-align: left;">
                         <p style="font-weight: bold; color: #92400e; margin-bottom: 10px;">This QR code leads to:</p>
                         <p style="color: #78350f; margin: 5px 0;"><strong>Video:</strong> "${selectedTitle}"</p>
                         <p style="color: #78350f; margin: 5px 0; word-break: break-all;"><strong>URL:</strong> ${youtubeUrl}</p>
                         <p style="color: #451a03; margin-top: 15px; font-size: 12px;">* Not a real YouTube video (yet) - but they don't know that! 😈</p>
                     </div>
-                    
                     <div style="margin-top: 20px; padding: 15px; background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%); border-radius: 8px;">
                         <h4 style="color: #3730a3; margin-bottom: 10px;">📍 Strategic Placement Suggestions:</h4>
                         <ul style="text-align: left; color: #312e81; list-style: none; padding: 0;">
@@ -794,20 +656,16 @@
                             <li style="margin: 5px 0;">✓ Inside cabinet doors (for maximum surprise)</li>
                         </ul>
                     </div>
-                    
                     <button class="copy-button" onclick="window.open('${qrApiUrl}', '_blank')" style="margin-top: 15px; background: #10b981;">
                         Download QR Code Image
                     </button>
                 </div>
-            `;
-            
+            `;   
             displayOutput(output, false);
         }
-
         function displayOutput(text, isNote = false) {
             const outputDiv = document.getElementById('output');
             if (typeof text === 'string' && text.includes('<div')) {
-                // If it's HTML content (like QR code output), insert it directly
                 outputDiv.innerHTML = text;
             } else if (isNote) {
                 outputDiv.innerHTML = `
@@ -845,34 +703,27 @@
                     </div>`;
             }
         }
-
         function shareToTwitter(text) {
             const hashtags = 'PassiveAggressive,RoommateProblems,RoommateFromHell';
             const url = `https://twitter.com/intent/tweet?text=${text}...&hashtags=${hashtags}`;
             window.open(url, '_blank', 'width=550,height=420');
         }
-
         function shareToReddit(text) {
             const title = encodeURIComponent('My Passive Aggressive Roommate Note of the Day');
             const url = `https://www.reddit.com/submit?title=${title}&text=${text}...&url=https://passive-aggressive-roommate.com`;
             window.open(url, '_blank', 'width=850,height=500');
         }
-
         function shareToFacebook() {
-            // Facebook doesn't allow pre-filled text, but we can share the "website"
             const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent('https://passive-aggressive-roommate.com')}&quote=${encodeURIComponent('Just generated the perfect passive aggressive note for my roommate 😈')}`;
             window.open(url, '_blank', 'width=550,height=420');
         }
-
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text).then(() => {
                 alert('Copied! Now go paste it on their door! 😈');
             });
         }
-
         function generateViralPost() {
             const pettiness = parseInt(document.getElementById('pettinessSlider').value);
-            
             const viralTemplates = [
                 {
                     title: "AITA for leaving this note for my roommate?",
@@ -895,18 +746,14 @@
                     content: "Started a TikTok documenting my roommate's mess. It's called '30 Days of Chaos.' We're on day 3 and already have 10K views. Their mom follows the account now. 📱"
                 }
             ];
-            
             const selected = viralTemplates[Math.min(pettiness - 1, viralTemplates.length - 1)];
-            
             const output = `
                 <div style="background: white; padding: 20px; border-radius: 10px;">
                     <h3 style="color: #FF4500; margin-bottom: 15px;">📱 Ready to Go Viral!</h3>
-                    
                     <div style="background: #f7f7f8; padding: 15px; border-radius: 8px; border-left: 4px solid #FF4500;">
                         <h4 style="color: #333; margin-bottom: 10px;">${selected.title}</h4>
                         <p style="color: #666; line-height: 1.6; white-space: pre-wrap;">${selected.content}</p>
                     </div>
-                    
                     <div class="social-share-buttons" style="margin-top: 20px;">
                         <button class="social-button twitter" onclick="shareToTwitter('${encodeURIComponent(selected.title + ': ' + selected.content.substring(0, 100))}')">
                             🐦 Post on X
@@ -921,7 +768,6 @@
                             🎵 Make TikTok
                         </button>
                     </div>
-                    
                     <div style="margin-top: 20px; padding: 15px; background: #fef3c7; border-radius: 8px;">
                         <p style="color: #92400e; font-weight: bold; margin-bottom: 10px;">🔥 Suggested Hashtags:</p>
                         <p style="color: #78350f; font-family: monospace; word-wrap: break-word;">
@@ -933,7 +779,6 @@
                     </div>
                 </div>
             `;
-            
             displayOutput(output, false);
         }
     </script>
