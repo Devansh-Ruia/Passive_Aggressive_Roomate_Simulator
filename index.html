@@ -202,6 +202,52 @@
             margin-top: 10px;
         }
 
+        .social-share-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .social-button {
+            padding: 10px 15px;
+            font-size: 14px;
+            border-radius: 25px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+        }
+
+        .social-button.twitter {
+            background: #1DA1F2;
+        }
+
+        .social-button.twitter:hover {
+            background: #0d8bd9;
+            transform: scale(1.05);
+        }
+
+        .social-button.reddit {
+            background: #FF4500;
+        }
+
+        .social-button.reddit:hover {
+            background: #e63e00;
+            transform: scale(1.05);
+        }
+
+        .social-button.facebook {
+            background: #4267B2;
+        }
+
+        .social-button.facebook:hover {
+            background: #365899;
+            transform: scale(1.05);
+        }
+
         .loading {
             text-align: center;
             color: #666;
@@ -229,7 +275,7 @@
                 <label>Pettiness Level:</label>
                 <div class="slider-container">
                     <input type="range" id="pettinessSlider" min="1" max="5" value="3">
-                    <span class="pettiness-label" id="pettinessLabel">Slightly Annoyed</span>
+                    <span class="pettiness-label" id="pettinessLabel">Fed Up</span>
                 </div>
             </div>
 
@@ -239,6 +285,7 @@
                 <button onclick="generateChoreChart()">📝 Chore Chart of Disappointment</button>
                 <button onclick="generateNoiseComplaint()">🔊 Noise Complaint Composer</button>
                 <button onclick="generateSubliminal()">👁️ Subliminal Message QR</button>
+                <button onclick="generateViralPost()" style="background: linear-gradient(135deg, #FF4500 0%, #1DA1F2 100%);">🔥 Generate Viral Post</button>
             </div>
 
             <div class="output-section" id="output">
@@ -502,16 +549,131 @@
                 // If it's HTML content (like QR code output), insert it directly
                 outputDiv.innerHTML = text;
             } else if (isNote) {
-                outputDiv.innerHTML = `<div class="sticky-note"><pre style="font-family: 'Comic Sans MS', cursive; white-space: pre-wrap;">${text}</pre><button class="copy-button" onclick="copyToClipboard('${text.replace(/'/g, "\\'")}')">Copy to Clipboard</button></div>`;
+                outputDiv.innerHTML = `
+                    <div class="sticky-note">
+                        <pre style="font-family: 'Comic Sans MS', cursive; white-space: pre-wrap;">${text}</pre>
+                        <button class="copy-button" onclick="copyToClipboard('${text.replace(/'/g, "\\'").replace(/\n/g, "\\n")}')">Copy to Clipboard</button>
+                        <div class="social-share-buttons">
+                            <button class="social-button twitter" onclick="shareToTwitter('${encodeURIComponent(text.substring(0, 200))}')">
+                                🐦 Share on X
+                            </button>
+                            <button class="social-button reddit" onclick="shareToReddit('${encodeURIComponent(text.substring(0, 200))}')">
+                                👽 Post to Reddit
+                            </button>
+                            <button class="social-button facebook" onclick="shareToFacebook()">
+                                📘 Share on Facebook
+                            </button>
+                        </div>
+                    </div>`;
             } else {
-                outputDiv.innerHTML = `<div class="sticky-note">${text}<br><button class="copy-button" onclick="copyToClipboard('${text.replace(/'/g, "\\'")}')">Copy to Clipboard</button></div>`;
+                outputDiv.innerHTML = `
+                    <div class="sticky-note">
+                        ${text}<br>
+                        <button class="copy-button" onclick="copyToClipboard('${text.replace(/'/g, "\\'").replace(/\n/g, "\\n")}')">Copy to Clipboard</button>
+                        <div class="social-share-buttons">
+                            <button class="social-button twitter" onclick="shareToTwitter('${encodeURIComponent(text.substring(0, 200))}')">
+                                🐦 Share on X
+                            </button>
+                            <button class="social-button reddit" onclick="shareToReddit('${encodeURIComponent(text.substring(0, 200))}')">
+                                👽 Post to Reddit
+                            </button>
+                            <button class="social-button facebook" onclick="shareToFacebook()">
+                                📘 Share on Facebook
+                            </button>
+                        </div>
+                    </div>`;
             }
+        }
+
+        function shareToTwitter(text) {
+            const hashtags = 'PassiveAggressive,RoommateProblems,RoommateFromHell';
+            const url = `https://twitter.com/intent/tweet?text=${text}...&hashtags=${hashtags}`;
+            window.open(url, '_blank', 'width=550,height=420');
+        }
+
+        function shareToReddit(text) {
+            const title = encodeURIComponent('My Passive Aggressive Roommate Note of the Day');
+            const url = `https://www.reddit.com/submit?title=${title}&text=${text}...&url=https://passive-aggressive-roommate.com`;
+            window.open(url, '_blank', 'width=850,height=500');
+        }
+
+        function shareToFacebook() {
+            // Facebook doesn't allow pre-filled text, but we can share the "website"
+            const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent('https://passive-aggressive-roommate.com')}&quote=${encodeURIComponent('Just generated the perfect passive aggressive note for my roommate 😈')}`;
+            window.open(url, '_blank', 'width=550,height=420');
         }
 
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text).then(() => {
                 alert('Copied! Now go paste it on their door! 😈');
             });
+        }
+
+        function generateViralPost() {
+            const pettiness = parseInt(document.getElementById('pettinessSlider').value);
+            
+            const viralTemplates = [
+                {
+                    title: "AITA for leaving this note for my roommate?",
+                    content: "So my roommate (let's call them 'The Destroyer') hasn't done dishes in 3 weeks. I left a note saying 'The fruit flies have started a union and they're demanding better working conditions.' Too much? 🤔"
+                },
+                {
+                    title: "Rate my roommate note from 1-10",
+                    content: "Dear Roommate, I wanted to let you know that the new life forms evolving in our sink have achieved consciousness. They've asked me to negotiate a peace treaty. Please advise. 🧪🦠"
+                },
+                {
+                    title: "Is this too passive aggressive? (Update: they still haven't cleaned)",
+                    content: "Day 47: The dishes remain unwashed. I've started a documentary. National Geographic is interested. Your parents have been notified. The kitchen has been quarantined by the CDC. 📺🎬"
+                },
+                {
+                    title: "My roommate eats my food, so I started invoicing them",
+                    content: "Invoice #2024-STOP-EATING-MY-FOOD\n\nLeftover Pizza: $15\nEmotional Damage: $200\nTrust Issues Therapy: $500\nHaving to eat cereal for dinner: Priceless\n\nTotal Due: Your half of next month's rent 💰"
+                },
+                {
+                    title: "POV: You're done being nice",
+                    content: "Started a TikTok documenting my roommate's mess. It's called '30 Days of Chaos.' We're on day 3 and already have 10K views. Their mom follows the account now. 📱"
+                }
+            ];
+            
+            const selected = viralTemplates[Math.min(pettiness - 1, viralTemplates.length - 1)];
+            
+            const output = `
+                <div style="background: white; padding: 20px; border-radius: 10px;">
+                    <h3 style="color: #FF4500; margin-bottom: 15px;">📱 Ready to Go Viral!</h3>
+                    
+                    <div style="background: #f7f7f8; padding: 15px; border-radius: 8px; border-left: 4px solid #FF4500;">
+                        <h4 style="color: #333; margin-bottom: 10px;">${selected.title}</h4>
+                        <p style="color: #666; line-height: 1.6; white-space: pre-wrap;">${selected.content}</p>
+                    </div>
+                    
+                    <div class="social-share-buttons" style="margin-top: 20px;">
+                        <button class="social-button twitter" onclick="shareToTwitter('${encodeURIComponent(selected.title + ': ' + selected.content.substring(0, 100))}')">
+                            🐦 Post on X
+                        </button>
+                        <button class="social-button reddit" onclick="shareToReddit('${encodeURIComponent(selected.content)}')">
+                            👽 Post to r/badroommates
+                        </button>
+                        <button class="social-button" style="background: #E60023;" onclick="alert('Screenshot and post to Instagram Stories with #RoommateFromHell')">
+                            📸 Instagram Story
+                        </button>
+                        <button class="social-button" style="background: #000;" onclick="alert('Copy and post to TikTok with #RoommateHorrorStory')">
+                            🎵 Make TikTok
+                        </button>
+                    </div>
+                    
+                    <div style="margin-top: 20px; padding: 15px; background: #fef3c7; border-radius: 8px;">
+                        <p style="color: #92400e; font-weight: bold; margin-bottom: 10px;">🔥 Suggested Hashtags:</p>
+                        <p style="color: #78350f; font-family: monospace; word-wrap: break-word;">
+                            #BadRoommate #PassiveAggressive #RoommateFromHell #AITA #RoommateHorrorStory #PettyRevenge #MaliciousCompliance #RoommateWars #StudentLife #AdultingIsHard
+                        </p>
+                        <button class="copy-button" onclick="copyToClipboard('#BadRoommate #PassiveAggressive #RoommateFromHell #AITA #RoommateHorrorStory #PettyRevenge')">
+                            Copy Hashtags
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            displayOutput(output, false);
         }
     </script>
 </body>
